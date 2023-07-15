@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout</title>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="bg-secondary p-3 container">
+      <div class="row justify-content-evenly align-items-center" style="height: 400px;">
+        <div class="col-3 text-bg-dark rounded-2">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita adipisci, similique blanditiis consequatur debitis quas modi! Blanditiis cumque adipisci inventore ab maxime distinctio sed impedit dolorem natus. Magnam, molestias accusantium.
+        </div>
+        <div class="col-3 align-self-end text-bg-danger rounded-2 position-relative">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita adipisci, similique blanditiis consequatur debitis quas modi! Blanditiis cumque adipisci inventore ab maxime distinctio sed impedit dolorem natus. Magnam, molestias accusantium.
+          <button class="text-bg-dark position-absolute rounded-circle top-0 end-0">B</button>
+        </div>
+        <div class="col-3 align-self-start text-bg-warning rounded-2">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita adipisci, similique blanditiis consequatur debitis quas modi! Blanditiis cumque adipisci inventore ab maxime distinctio sed impedit dolorem natus. Magnam, molestias accusantium.
+        </div>
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="container text-center">
+      <div class="row">
+        <div class="col text-bg-danger order-5">
+          First in DOM, no order applied
+        </div>
+        <div class="col text-bg-primary order-1">
+          Second in DOM, with a larger order
+        </div>
+        <div class="col text-bg-success">
+          Third in DOM, with an order of 1
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="bg-secondary p-3 container-fluid">
+      <div class="row">
+        <div class="col p-5 bg-dark"></div>
+        <div class="col p-5 bg-danger"></div>
+        <div class="col p-5 bg-warning"></div>
+
+        <div class="col p-5 bg-dark"></div>
+        <div class="col p-5 bg-danger"></div>
+        <div class="col p-5 bg-warning"></div>
+
+        <div class="col p-5 bg-dark"></div>
+        <div class="col p-5 bg-danger"></div>
+        <div class="col p-5 bg-warning"></div>
+
+        <div class="col p-5 bg-dark"></div>
+        <div class="col p-5 bg-danger"></div>
+        <div class="col p-5 bg-warning"></div>
+      </div>
+    </div> -->
+
+    <!-- <div style="height: 400px;"
+      class="border border-3 border-primary d-flex justify-content-center align-items-center align-items-md-start align-items-xl-end m-2 p-2"
+    >
+      <div class="bg-primary p-5"></div>
+      <div class="bg-info p-5"></div>
+      <div class="bg-success p-5"></div>
+    </div> -->
+    <!-- <h3 class="mb-0 text-start text-lg-end text-xl-center">Min Ga Lar Par</h3> -->
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

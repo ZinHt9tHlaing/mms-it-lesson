@@ -1,0 +1,108 @@
+<fieldset>
+  <legend>Register Form</legend>
+
+  <label for="yourName">Your Name</label>
+  <input
+    id="yourName"
+    type="text"
+    name="your_name"
+    minlength="5"
+    maxlength="20"
+    placeholder="eg . zin htet hlaing"
+    form="reg"
+    required
+    autofocus
+  />
+  <br />
+  <form action="https://mms-it.com" id="reg" method="get">    
+
+    <br />
+    <br />
+
+    <label for="">Your Email</label>
+    <input type="email" name="your_email" value="zhh@gmail.com" />
+
+    <br />
+    <br />
+
+    <label for="">Password</label>
+    <input type="password" name="password" />
+
+    <br />
+    <br />
+
+    <!-- <label for="">Date of Birth</label>
+    <input type="date" name="date_of_birth" max="2005-01-01" />
+
+    <br />
+    <br />
+
+    <label for="">Salary</label>
+    <input type="number" name="salary" min="1000" max="9999" />
+
+    <br />
+    <br /> -->
+
+    <label for="">Select Gender</label>
+    [
+    <input type="radio" name="gender" id="male" value="male" checked />
+    <label for="male">Male</label>
+    ] [
+    <input type="radio" name="gender" id="female" value="female" />
+    <label for="female">Female</label>
+    ]
+
+    <br />
+    <br />
+
+    <label for="">Select Your Skills</label>
+    <br />
+    <input type="checkbox" name="skill" value="html" id="html" />
+    <label for="html">HTML</label> |
+
+    <input type="checkbox" name="skill" value="css" id="css" />
+    <label for="css">CSS</label> |
+
+    <input type="checkbox" name="skill" value="js" id="js" />
+    <label for="js">JavaScript</label> |
+
+    <input type="checkbox" name="skill" value="php" id="php" />
+    <label for="php">PHP</label> |
+
+    <input type="checkbox" name="skill" value="sql" id="sql" />
+    <label for="sql">SQL</label> |
+
+    <br />
+    <br />
+
+    <label for="">Select Language</label>
+    <select name="language" id="">
+      <option value="mm">Myanmar</option>
+      <option value="en">English</option>
+      <option value="kr">Korea</option>
+      <option value="jp">Japanese</option>
+    </select>
+
+    <br />
+    <br />
+
+    <label for="photo">Your Photo</label>
+    <input type="file" name="photo" id="photo" />
+
+    <br />
+    <br />
+
+    <label for="address">Address</label>
+    <br />
+    <textarea name="address" id="address" cols="30" rows="5">
+No 51 Byint Naung Road</textarea
+    >
+
+    <br />
+    <br />
+
+    <button>&hearts; Register</button>
+    <!-- <input type="submit" value="Register Form"> -->
+    <!-- <input type="button" value="Click Me"> -->
+  </form>
+</fieldset>

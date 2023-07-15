@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+
+    <style>
+      .img-200 {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        object-position: center;
+      }
+    </style>
+  </head>
+  <body class="p-5">
+    <h1>
+      Hello
+      <span class="text-secondary">MIn Ga Lar Par </span>
+    </h1>
+
+    <h1 class="display-1">San Kyi Tar</h1>
+
+    <!-- <p class="lead">Lorem ipsum dolor sit amet.</p>
+    <p>
+      <abbr title="">HTML</abbr>
+    </p>
+
+    <hr>
+    <blockquote cite="http://www.worldwildlife.org/who/index.html">
+      For 50 years, WWF has been protecting the future of nature. The world's
+      leading conservation organization, WWF works in 100 countries and is
+      supported by 1.2 million members in the United States and close to 5
+      million globally.
+    </blockquote>
+
+    <figure>
+        <blockquote class="blockquote">
+          <p>A well-known quote, contained in a blockquote element.</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </figcaption>
+      </figure> -->
+
+    <img
+      class="img-thumbnail mx-auto d-block img-200"
+      src="./images/ncsl.jpg"
+      alt=""
+    />
+
+    <!-- <img class="img-fluid img-200" src="./images/ncsl2.jpg" alt=""> -->
+
+    <!-- <picture>
+            <source media="(max-width: 800px)" srcset="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/2023/03_29_revuelto/gate_models_s_02_m.jpg">
+            <img src="./images/ncsl.jpg" alt="">
+        </picture>  -->
+
+    <table class="table table-light table-bordered table-hover table-striped">
+      <thead class="table-dark">
+        <tr class="active">
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr class="align-middle">
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>
+            @ Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam,
+            repellat .
+          </td>
+        </tr>
+        <tr class="table-active">
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">Larry the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br /><br />
+
+    <h3 class="text-decoration-underline">Bootstrap Form</h3>
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Your Name lg</label>
+      <input
+        type="text"
+        class="form-control form-control-lg is-invalid"
+        id="name"
+      />
+      <div class="invalid-feedback">You are wrong</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Your color lg</label>
+      <input
+        type="color"
+        class="form-control-color form-control-lg"
+        id="name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Your Password</label>
+      <input
+        type="password"
+        name=""
+        id="password"
+        class="form-control is-valid"
+      />
+      <div class="valid-feedback">You Are right</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="photo" class="form-label">Your Photo</label>
+      <input type="file" name="" id="photo" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Your Email sm</label>
+      <input
+        type="email"
+        name=""
+        id="email"
+        class="form-control form-control-sm"
+        placeholder="email@example.com"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Select</label>
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Gender</label> <br />
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="male" />
+        <label class="form-check-label" for="male"> Male </label>
+      </div>
+
+      <div class="form-checke">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gender"
+          id="female"
+          checked
+        />
+        <label class="form-check-label" for="female"> Female </label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Select Your Skill</label>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="html"
+          name="skill"
+        />
+        <label class="form-check-label" for="html"> HTML </label>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="css"
+          name="skill"
+        />
+        <label class="form-check-label" for="css"> CSS </label>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="js"
+          name="skill"
+        />
+        <label class="form-check-label" for="js"> JavaScript </label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label">Your Address</label>
+      <textarea
+        name=""
+        id="address"
+        class="form-control"
+        rows="5"
+        readonly
+      ></textarea>
+    </div>
+
+    <label for="exampleDataList" class="form-label">Datalist example</label>
+    <input
+      class="form-control"
+      list="datalistOptions"
+      id="exampleDataList"
+      placeholder="Type to search..."
+    />
+    <datalist id="datalistOptions">
+      <option value="San Francisco"></option>
+      <option value="New York"></option>
+      <option value="Seattle"></option>
+      <option value="Los Angeles"></option>
+      <option value="Chicago"></option>
+    </datalist>
+    <div class="mb-3"></div>
+
+    <div class="mb-3">
+      <label for="hr" class="form-label">Working Hour</label>
+      <input
+        type="range"
+        class="form-range"
+        id="hr"
+        min="0"
+        max="8"
+        value="0"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Salary</label>
+      <div class="input-group">
+        <input type="number" class="form-control" placeholder="Username" />
+        <span class="input-group-text">$</span>
+        <input type="number" class="form-control" placeholder="Currency" />
+      </div>
+    </div>
+
+    <div class="mb-3 input-group">
+      <input type="text" class="form-control" />
+      <button class="btn btn-primary">Search</button>
+    </div>
+
+    <div class="input-group bg-info mb-3">
+      <div class="input-group-text">
+        <input type="radio" id="male" class="form-check-input" name="gender" />
+        <label for="male">Male</label>
+      </div>
+      <div class="input-group-text">
+        <input
+          type="radio"
+          id="female"
+          class="form-check-input"
+          name="gender"
+        />
+        <label for="female">Female</label>
+      </div>
+      <input type="text" class="form-control" />
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-text">
+        <input type="checkbox" class="form-check-input" />
+      </div>
+      <input type="text" class="form-control" />
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+      />
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <div class="vh-100"></div>
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

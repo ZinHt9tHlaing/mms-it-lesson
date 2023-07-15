@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <fieldset>
+        <legend>Register Form</legend>
+
+        <form action="https://mms-it.com" method="post" enctype="multipart/form-data">
+
+            <div>
+                <!-- input tags -->
+                <label for="your_name">Your Name : </label>
+                <input type="text" name="your_name" id="your_name" placeholder="zin htet hlaing" required>
+            </div>
+
+            <div>
+                <label for="your_email">Your Email : </label>
+                <input type="email" name="email" id="your_email" value="@gmail.com">
+            </div>
+
+            <div>
+                <label for="your_password">Password : </label>
+                <input type="password" name="password" id="your_password">
+            </div>
+            
+            <label for="">Gender : </label>
+
+            <input type="radio" value="male_gender" name="gender" id="male">
+            <label for="male">Male</label>
+
+            <input type="radio" value="female_gender" name="gender" id="female">
+            <label for="female">Female</label>
+
+            <hr>
+
+            <label for="">Skill : </label>
+
+            <input type="checkbox" id="html" name="skill" value="html">
+            <label for="html">HTML</label>
+
+            <input type="checkbox" id="css" name="skill" value="css">
+            <label for="css">CSS</label>
+
+            <input type="checkbox" id="js" name="skill" value="js">
+            <label for="js">JavaScript</label>
+
+            <input type="checkbox" id="php" name="skill" value="php">
+            <label for="php">PHP</label>
+
+            <input type="checkbox" id="sql" name="skill" value="sql">
+            <label for="sql">SQL</label>
+
+            <hr>
+
+            <label for="nation">Nationality</label>
+
+            <select name="nationality" id="nation">
+                <option value="mm">Myanmar</option>
+                <option value="jp">Japan</option>
+                <option value="kr">Korea</option>
+                <option value="sg">Singapore</option>
+                <option value="us">United State</option>
+            </select>
+
+            <hr>
+
+            <hr>
+
+            <textarea name="" id="" cols="35" rows="5"></textarea>
+
+            <hr>
+
+            <label for="">Photo : </label>
+            <input type="file" accept="image/jpeg,video/mp4" multiple>
+
+            <hr>
+
+            <label for="">Volume Level : </label>
+            <input type="range" name="" id="">
+
+            <hr>
+
+            <!-- <input type="submit"> -->
+            <!-- <input type="button" value="Click me"> -->
+            <!-- <button>Btn Click</button> -->
+            <button type="submit">Btn Click</button>
+
+        </form>
+    </fieldset>
+
+    <marquee direction="right">
+        <h1>This is heading</h1>
+    </marquee>
+    <hr>
+
+    <h3>Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Job</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Zin Htet Hlaing</td>
+                <td>09123123123</td>
+                <td rowspan="2">Developer</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Su Su</td>
+                <td>09456456456</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Mya Mya</td>
+                <td>09789789789</td>
+                <td>Marketing</td>
+            </tr>
+             <tr>
+                <td>4</td>
+                <td>Zin Htet Hlaing</td>
+                <td>09123123123</td>
+                <td>Developer</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Su Su</td>
+                <td>09456456456</td>
+                <td>Developer</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Mya Mya</td>
+                <td>09789789789</td>
+                <td>Marketing</td>
+            </tr>
+            <tr>
+                <td colspan="3">Total</td>
+                <td>6 staff</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Unordered List</h3>
+    <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Grape</li>
+        <li>Mango</li>
+        <li>Orange</li>
+        <li> Tea
+            <ul>
+                <li>Black Tea</li>
+                <li>Green Tea</li>
+            </ul>
+            Milk
+        </li>
+    </ul>
+
+    <h3>Ordered List</h3>
+    <ol>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Grape</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ol>
+</body>
+</html>

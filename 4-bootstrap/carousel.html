@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel</title>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <style>
+      .slide-img {
+        display: block;
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        /* object-position: top; */
+      }
+
+      .text-box{
+        height: 300px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="p-5">
+      <div class="position-relative">
+        <div id="slideShow" class="carousel slide" data-bs-ride="carousel">
+          <!-- <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#slideShow"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#slideShow"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#slideShow"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#slideShow"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#slideShow"
+            data-bs-slide-to="4"
+            aria-label="Slide 5"
+          ></button>
+        </div> -->
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./images/ncsl.jpg" class="slide-img" />
+            </div>
+            <div class="carousel-item">
+              <img src="./images/poe-mamhe-thar-2.jpg" class="slide-img" />
+            </div>
+            <div class="carousel-item">
+              <img src="./images/poe-mamhe-thar-3.jpeg" class="slide-img" />
+            </div>
+            <div class="carousel-item">
+              <img src="./images/poe-mamhe-thar-6.jpg" class="slide-img" />
+            </div>
+            <div class="carousel-item">
+              <img src="./images/poe-mamhe-thar-7.jpg" class="slide-img" />
+            </div>
+          </div>
+
+          <!-- <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#slideShow"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#slideShow"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button> -->
+        </div>
+
+        <button
+          class="btn btn-primary position-absolute top-50 start-0 translate-middle-y"
+          data-bs-target="#slideShow"
+          data-bs-slide="prev"
+        >
+          <i class="bi bi-caret-left-fill"></i>
+        </button>
+
+        <button
+          class="btn btn-primary position-absolute top-50 end-0 translate-middle-y"
+          data-bs-target="#slideShow"
+          data-bs-slide="next"
+        >
+          <i class="bi bi-caret-right-fill"></i>
+        </button>
+      </div>
+
+      <div id="textSlide" class="carousel slide m-3">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#textSlide"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#textSlide"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#textSlide"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner ">
+          <div class="carousel-item active p-5 text-center text-box text-bg-primary">
+            <h1>Heading 1</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio.
+            </p>
+          </div>
+          <div class="carousel-item text-slide p-5 text-center text-box text-bg-secondary">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio.
+            </p>
+          </div>
+          <div class="carousel-item text-slide p-5 text-center text-box text-bg-info">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio.
+            </p>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#textSlide" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#textSlide" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
