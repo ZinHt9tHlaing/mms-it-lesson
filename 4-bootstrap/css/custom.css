@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "custom";
+  src: url(../fonts/Aller/Aller_Bd.ttf);
+}
+
+@font-face {
+  font-family: "para";
+  src: url(../fonts/rubik/Rubik-Regular.ttf);
+}
+
+h1 {
+  font-family: "custom";
+}
+
+p {
+  font-family: "para";
+}
+
+.tooltip {
+  position: relative;
+  font-family: "custom";
+  font-size: 25px;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  transition: 0.9s;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  font-size: 15px;
+  padding: 5px 0;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0.4;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}

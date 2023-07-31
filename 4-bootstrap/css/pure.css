@@ -1,0 +1,64 @@
+.my-dropdown-content {
+  display: none;
+}
+
+.my-dropdown-btn:focus + .my-dropdown-content {
+  display: block;
+}
+
+.counter {
+  counter-reset: selection;
+}
+
+.counter p::before {
+  counter-increment: selection;
+  content: counter(selection) ". ";
+}
+
+.bg-box {
+  width: 500px;
+  height: 500px;
+  border: 10px solid rgba(0, 0, 0, 0.271);
+  background-image: url("../images/ncsl.jpg");
+  background-size: 300px;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  padding: 20px;
+}
+
+.gd-box {
+  width: 300px;
+  height: 100px;
+  transition: 0.5s;
+  /* border: 10px solid rgb(0, 0, 0); */
+  background-image: linear-gradient(to right, red 10%, white 20%);
+}
+
+.gd-box:hover {
+  background-image: linear-gradient(to right, white 10%, red 20%);
+}
+
+.circle-progress{
+    width: 300px;
+    height: 300px;
+    background-image: conic-gradient(red 0deg 270deg, white 0deg);
+    /* border-radius: 50%; */
+    position: relative;
+    transform: rotate(45deg);
+    margin-left: 50px;
+    transition: 0.5s;
+}
+
+.circle-progress::after{
+    content: "";
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background-color: pink;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    /* border-radius: 50%; */
+}

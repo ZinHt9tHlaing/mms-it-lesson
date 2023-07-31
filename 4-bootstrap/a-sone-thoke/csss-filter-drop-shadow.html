@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Filter Drop Shadow</title>
+    <style>
+        body{
+            background: #eee;
+        }
+        .box{
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img{
+            width: 250px;
+            /* box-shadow: 10px 10px 0px black; */
+            filter: drop-shadow(10px 10px 10px black);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <img src="./logo/logo.png" alt="" class="img">
+    </div>
+    
+</body>
+</html>
