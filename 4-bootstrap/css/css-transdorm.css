@@ -45,3 +45,20 @@
   transition: 0.5s;
   transform: translate(10px, 20px) rotateX(40deg) scale(0.5) skewY(10deg);
 }
+
+.container {
+  border: 3px solid black;
+  margin: 30px;
+}
+
+.container img {
+  width: 300px;
+  transform: translateX(-300px);
+  transition-duration: 2s;
+  /* transition-delay: 0.5s; */
+  transition-timing-function: ease;
+}
+
+.container:hover img{
+  transform: translate(0);
+}

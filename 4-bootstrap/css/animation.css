@@ -1,0 +1,38 @@
+@keyframes h1Ani {
+  0% {
+    transform: translate(0, 0);
+    color: grey;
+  }
+
+  25% {
+    color: red;
+    transform: translateX(300px) rotateX(360deg);
+    font-size: 3em;
+  }
+
+  50% {
+    transform: translate(300px, 300px);
+    color: orange;
+    font-size: 2em;
+  }
+
+  75% {
+    transform: translate(0, 300px) rotateX(360deg);
+    color: yellowgreen;
+    font-size: 1em;
+  }
+
+  100% {
+    transform: translateY(-100px, 0) skew(50deg) scale(0.5);
+    color: green;
+  }
+}
+
+h1 {
+  /* animation-name: h1Ani;
+  animation-duration: 3s;
+  animation-iteration-count: 4;
+  animation-direction: alternate;
+  animation-timing-function: ease; */
+  animation: h1Ani 2s ease-in 1s 4 alternate;
+}

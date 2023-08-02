@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: azure;
+  padding: 30px;
+}
+
+.heading {
+  margin-bottom: 30px;
+  font-size: 35px;
+  animation: textColor 2s;
+  animation-delay: 3s;
+  animation-fill-mode: both;
+}
+
+/* animation fill mode */
+@keyframes textColor {
+  0% {
+    color: orangered;
+  }
+
+  100% {
+    color: violet;
+  }
+}
+
+.boxes {
+}
+
+.box {
+  background-color: white;
+  border: 3px solid black;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.box h4 {
+  margin-bottom: 5px;
+}
+
+.box p {
+  color: gray;
+}
+
+/* fade in effect */
+
+.fadeIn {
+  animation: fadeIn 2s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Fade out Effect */
+
+.fadeOut {
+  animation: fadeOut 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* slide in top effect*/
+
+.slideInTop {
+  animation: slideInTop 2s;
+  animation-fill-mode: both;
+}
+
+@keyframes slideInTop {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* slide in left effect*/
+
+.slideInLeft {
+  animation: slideInLeft 2s;
+  animation-fill-mode: both;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* shake */
+
+.shake {
+  
+}
+
+.shake:hover{
+  animation: shake 1s 2;
+  animation-fill-mode: backwards;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(-100px) scale(2, 0.7);
+  }
+
+  20% {
+    transform: translateX(100px) scale(0.8, 1.5);
+  }
+
+  40% {
+    transform: translateX(-70px) scale(1.5, 0.8);
+  }
+
+  60% {
+    transform: translateX(70px) scale(0.5, 2);
+  }
+
+  80% {
+    transform: translateX(-30px) scale(1, 0.9);
+  }
+
+  90% {
+    transform: translateX(30px) scale(0.6, 2.2);
+  }
+
+  100% {
+    transform: translateX(0) scale(1, 1);
+  }
+}
+
+/* Scale effect */
+
+/* zoom in left */
+
+.zoomInLeft {
+  animation: zoomInLeft 5s;
+  animation-fill-mode: both;
+}
+
+@keyframes zoomInLeft {
+  0% {
+    transform: Scale(0.3) translateX(-900px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: Scale(0.3) translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: Scale(1);
+  }
+}
+
+/* Zoom Out */
+
+.zoomOut {
+  animation: zoomIn 2s;
+  animation-timing-function: both;
+  animation-direction: reverse;
+}
+
+/* Zoom In */
+
+.zoomIn {
+  animation: zoomIn 2s;
+  animation-fill-mode: both;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: Scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: Scale(1);
+    opacity: 1;
+  }
+}
+
+/* animation delay */
+
+.animation-delay-0 {
+  animation-delay: 0;
+}
+
+.animation-delay-1 {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-2 {
+  animation-delay: 1s;
+}
+
+.animation-delay-3 {
+  animation-delay: 1.5s;
+}
+
+.animation-delay-4 {
+  animation-delay: 2s;
+}
