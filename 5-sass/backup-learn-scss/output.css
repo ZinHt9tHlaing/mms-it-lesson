@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+}
+
+.brand {
+  height: 50px;
+}
+
+.brand-img {
+  height: 100%;
+}
+
+nav {
+  background-color: gray;
+  box-shadow: 0 0 5px;
+}
+nav ul {
+  margin-left: auto;
+}
+nav ul li {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+nav ul li a {
+  color: #333;
+}
+nav ul li a:hover {
+  background-color: #333;
+  color: white;
+}
+nav ul:hover {
+  transform: rotate(45deg);
+}
+
+input {
+  border: 1px solid black;
+}
+
+button {
+  background-color: black;
+}
+
+select {
+  border: 1px solid black;
+}
+
+.btn-primary {
+  border: blue;
+  background-color: 2px solid blue;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.btn-danger {
+  border: red;
+  background-color: 2px solid red;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.btn-success {
+  border: green;
+  background-color: 2px solid green;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.alert-success, .alert-danger, .alert-primary {
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  display: block;
+  box-shadow: 0 0 5px;
+}
+
+.alert-primary {
+  border: 2px solid blue;
+  background-color: blue;
+}
+
+.alert-danger {
+  border: 2px solid red;
+  background-color: red;
+}
+
+.alert-success {
+  border: 2px solid green;
+  background-color: green;
+}
+
+/*# sourceMappingURL=output.css.map */

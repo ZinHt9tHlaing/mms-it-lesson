@@ -1,0 +1,1 @@
+sass scss/input.scss css/output.css --run --no-source-map

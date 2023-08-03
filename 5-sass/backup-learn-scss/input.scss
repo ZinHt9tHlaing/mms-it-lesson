@@ -1,0 +1,21 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+@use "global";
+
+@use "header";
+
+@use "form";
+
+@use "button";
+
+@use 'alert';
+
+// body {
+//   font: 100% $font-stack;
+//   color: $primary-color;
+// }
+
+// p {
+//   color: $primary-color;
+// }
