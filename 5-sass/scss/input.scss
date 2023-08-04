@@ -1,1 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Text:wght@400;700&family=Lobster+Two:wght@400;700&family=Montserrat+Alternates:wght@400;700&family=Signika:wght@700&display=swap");
+// Variable override First
+
+// $primary: #581b98;
+// $secondary: #fc85ae;
+// $success: #83e85a;
+// $danger: #cb3b3b;
+// $light : #f0f0f0;
+// $btn-link-color : #3d5af1;
+
+// $border-radius: 100px;
+$spacer : 2rem;
+
+// button customize
+// $btn-border-radius: 0;
+// $btn-padding-x: 30px;
+// $input-btn-padding-x : 30px;
+// $btn-box-shadow: 5px 5px 10 black;
+
+$body-bg: rgb(153, 153, 153);
+
+$display-font-family: "Big Shoulders Inline Text", cursive;
+$headings-font-family: "Signika", sans-serif;
+$font-family-sans-serif: "Montserrat Alternates", sans-serif;
+$btn-font-family: "Signika", sans-serif;
+
+// maps
+$theme-colors: (
+  "primary": #581b98,
+  "zhh": orangered,
+  //   "secondary":  $secondary,
+  "success": #83e85a,
+  //   "info":       $info,
+  //   "warning":    $warning,
+  //   "danger":     $danger,
+  //   "light":      $light,
+  //   "dark":       $dark,,
+);
+
+// $spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  10: $spacer * 6,
+  20: $spacer * 12,
+);
+
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@include media-breakpoint-between(md, lg) {
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: $danger;
+    border-radius: 50%;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: $primary;
+    }
+  }
