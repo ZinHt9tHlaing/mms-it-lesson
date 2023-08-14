@@ -1,0 +1,16 @@
+{
+  "name": "1-sushi",
+  "version": "1.0.0",
+  "description": "- Responsive Sushi Restaurant Website Design Using HTML CSS & JavaScript\r - Includes a dark and light mode.\r - Smooth scrolling in each section.\r - Contains animations when scrolling.\r - Developed first with the Mobile First methodology, then for desktop.\r - Compatible with all mobile devices and with a beautiful and pleasant user interface.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.1",
+    "remixicon": "^3.5.0"
+  }
+}
