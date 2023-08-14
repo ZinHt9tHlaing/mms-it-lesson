@@ -5,15 +5,15 @@
 // //   console.log("* * *");
 // }
 
-let fruits = ["apple", "orange", "mango", "banana", "lemon", "lime"];
+// let fruits = ["apple", "orange", "mango", "banana", "lemon", "lime"];
 
-let mySelf = {
-  name: "zin htet hlaing",
-  age: 21,
-  job: "student",
-  relationship: null,
-  skill: "learning",
-};
+// let mySelf = {
+//   name: "zin htet hlaing",
+//   age: 21,
+//   job: "student",
+//   relationship: null,
+//   skill: "learning",
+// };
 
 // // console.log(`I like ${fruits[0]}`);
 // // console.log(`I like ${fruits[1]}`);
@@ -59,3 +59,10 @@ let mySelf = {
 // for (key in mySelf) {
 //     console.log(key,mySelf[key]);
 // }
+
+
+for (let i = 0; i <= 5; i++){
+  console.log("*");
+  console.log("* *");
+  console.log("* * *");
+}
