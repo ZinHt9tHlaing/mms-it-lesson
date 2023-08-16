@@ -6,12 +6,20 @@
 // bootstrap customize
 $navbar-nav-link-padding-x: 1.5rem;
 $font-family-sans-serif: "Poppins", sans-serif;
-$headings-font-family: "Lora", serif;
+// $display-font-family: "Lora", serif;
+// $headings-font-family: "Dancing Script", cursive;
 $font-size-base: 0.9rem;
 
 $body-bg: hsl(19, 100%, 96%);
-$primary: hsl(19, 64%, 52%);
+$body-color: hsl(19, 16%, 35%);
+$primary: hsl(19, 64%, 54%);
+$primary-text-emphasis: hsl(19, 64%, 52%);
 $light: hsl(19, 8%, 55%);
+$dark: hsl(19, 16%, 15%);
+$white: hsl(19, 100%, 97%);
+
+$navbar-light-hover-color: $primary;
+$navbar-light-active-color:  $primary;
 
 $btn-border-radius: 2rem;
 $btn-padding-x: 1.8rem;
@@ -21,8 +29,8 @@ $btn-padding-y: 0.5rem;
 $spacer: 1rem;
 $spacers: (
   0: 0,
-  1: $spacer * .25,
-  2: $spacer * .5,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
   3: $spacer,
   4: $spacer * 1.5,
   5: $spacer * 3,
@@ -34,6 +42,36 @@ $spacers: (
 );
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+nav{
+  background: $body-bg;
+}
+
+.nav-hover:hover{
+  color: $primary;
+}
+
+.nav-hover:active{
+  color: $primary;
+}
+
+.btn-icon i{
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.title {
+  font-family: "Lora", serif;
+  color: hsl(19, 16%, 15%);
+}
+
+.sub-title {
+  font-family: "Dancing Script", cursive;
+}
+
+body {
+  height: 3000px;
+}
 
 // custom css
 .navbar-brand-logo {
@@ -55,6 +93,7 @@ $spacers: (
   vertical-align: middle;
 }
 
+// home
 .home-title {
   font-weight: 600;
 }
@@ -63,7 +102,108 @@ $spacers: (
   height: 50px;
 }
 
-.spacer-100{
-  margin-top: 100px;
-  margin-bottom: 100px;
+#home {
+  // background: url(../img/leaf-branch-2.png) no-repeat top left, url(../img/leaf-branch-4.png) no-repeat bottom right;
+  position: relative;
 }
+
+#home::before {
+  content: url(../img/leaf-branch-2.png);
+  opacity: 0.2;
+  position: absolute;
+  transform: translateX(-61px) rotate(92deg);
+  z-index: -1;
+}
+
+#home::after {
+  content: url(../img/leaf-branch-4.png);
+  opacity: 0.2;
+  position: absolute;
+  transform: translateX(106px) rotate(339deg);
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+// about
+#about {
+  position: relative;
+}
+
+#about::after {
+  content: url(../img/leaf-branch-1.png);
+  opacity: 0.2;
+  position: absolute;
+  transform: translateX(106px) rotate(339deg);
+  bottom: 0;
+  right: 0;
+}
+
+// .animation-1s{
+//   transition: 5s;
+// }
+
+// .animation-2s{
+//   transition: 1s;
+// }
+
+// .animation-3xs{
+//   transition: 1.5s;
+// }
+
+// .spacer-100 {
+//   margin-top: 100px;
+//   margin-bottom: 100px;
+// }
+
+.dish-card {
+  background-color: hsl(19, 100%, 97%);
+}
+
+.dish-card img {
+  transform: translateY(-50px);
+  transition: 0.5s;
+}
+
+.dish-card:hover img {
+  transform: translateY(-70px);
+}
+
+.newsletter {
+  border-radius: 2rem;
+}
+
+@include media-breakpoint-down(md) {
+  .newsletter {
+    border-radius: 0;
+  }
+}
+
+// .dish-card .popular-btn{
+//   position: relative;
+// }
+
+// .popular-btn{
+//   font-size:1.25rem;
+//   color: hsl(19, 100%, 97%);
+//   box-shadow: 0 4px 20px hsla(19, 64%, 20%, .2);
+//   position: absolute;
+//   bottom: 1.25rem;
+//   left: 1.25rem;
+// }
+
+// recent
+// #recent{
+//   position: relative;
+// }
+
+// #recent::after{
+//   content: url(../img/spinach-leaf.png);
+//   width: 80px;
+//   height: 80px;
+//   opacity: 0.2;
+//   position: absolute;
+//   // transform: translateX(106px) rotate(339deg);
+//   bottom: 0;
+//   right: 0;
+// }
