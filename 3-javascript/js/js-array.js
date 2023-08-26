@@ -441,6 +441,59 @@ const obj3 = {
   ...points,
 };
 
+// pv = previous value
+// cv = current value
+
+// console.log(points);
+
+// const result = points.every(point => point < 15);
+// const result = points.some(point => point < 15);
+
+// console.log(result);
+
+// const result = points.reduce((pv, cv) => {
+//   console.log(pv, cv);
+//   return pv + cv;
+// },0);
+
+// const result = points.reduce((pv, cv) => pv + cv);
+
+// const result = products.reduce((pv, cv) => pv - cv.price,5000);
+
+// console.log(result);
+
+// const result = products.find((product) => {
+//   console.log(product);
+//   // return product.id === 6;
+//   return product.price < 50;
+// })
+
+// console.log("result", result);
+
+// 50 < price < 100
+// id = 15
+// id - 15 || id = 18 || id = 3
+// 1,3,18,4,12
+
+// const saleProducts = products.filter((product) => {
+//   // console.table(product.price);
+//   // return product.price < 50;
+//   // return product.price >= 50 && product.price <= 120;
+//   // return product.id === 15 || product.id === 18 || product.id === 3;
+//   // return [1, 3, 18, 4, 12, 19].includes(product.id);
+// });
+
+// const saleProducts = products.filter(product => product.price < 50);
+
+// console.log(saleProducts);
+
+// console.log(points);
+// const lessThan30 = points.filter(point => {
+//   console.log(point);
+//   return point < 30;
+// })
+// console.log(lessThan30);
+
 // console.table(student1Mark);
 
 // const result = student1Mark.map((subject) => {
@@ -451,14 +504,14 @@ const obj3 = {
 // });
 // console.table(result);
 
-console.table(products);
+// console.table(products);
 
-const saleProduct = products.map(product => {
-  product.price += 50;
-  return product;
-})
+// const saleProduct = products.map(product => {
+//   product.price += 50;
+//   return product;
+// })
 
-console.table(saleProduct);
+// console.table(saleProduct);
 
 // const forEach = points.forEach(el => console.log(el));
 // console.log(forEach);
@@ -552,3 +605,67 @@ console.table(saleProduct);
 // const arr = new Array("a", "b", "c", "d");
 // console.log(arr);
 // console.log(arr[0]);
+
+// method chaining
+
+class Chain {
+  a() {
+    console.log("a method");
+    return this;
+  }
+
+  b() {
+    console.log("b method");
+    return this;
+  }
+
+  c() {
+    console.log("c method");
+    return this;
+  }
+}
+
+// const chain = new Chain;
+// console.log(chain);
+// console.log(chain.a().b().c().b());
+
+// product ထဲက ဈေး ၅၀ အောက် ပစ္စည်းတွေ ရဲ့ စုစုပေါင်း တန်ဖိုး
+
+// console.log(
+//   products
+//     .filter((product) => product.price < 50)
+//     .reduce((pv, cv) => pv + cv.price, 0)
+// );
+
+// စကားလုံး ၅လုံး ပဲရှိတဲ့ကောင်ကို လိုချင်တယ် , အကြီးတွေပြောင်းမယ် , string အနေနဲ့ ပြန်ထုတ်ပြမယ်
+const fruits = ["apple", "banana", "orange", "mango", "lemon", "lime"];
+
+// console.log(
+//   fruits
+//     .filter((el) => el.length === 5)
+//     .map((el) => el.toUpperCase())
+//     .join(", ")
+// );
+
+// zin htet hlaing => zinHtetHlaing (camel case)
+// zin htet hlaing => ZinHtetHlaing (pascal case)
+// zinhtethlaing => ZiNhTeThLaInG
+
+let myName = "zin htet hlaing";
+
+// console.log(myName
+//   .toLowerCase()
+//     .split(" ")
+//     .map(el => el.replace(el[0], el[0].toUpperCase()),
+// ).join());
+
+function toPascalCase(text) {
+  return text
+    .toLowerCase()
+    .split(" ")
+    .map((el) => el.replace(el[0], el[0].toUpperCase()))
+    .join("");
+}
+
+console.log(toPascalCase(myName));
+console.log(toPascalCase("san kyi tar par"));
