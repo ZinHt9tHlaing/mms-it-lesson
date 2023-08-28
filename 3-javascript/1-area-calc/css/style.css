@@ -1,0 +1,8 @@
+.display{
+    display: flex;
+    align-items: center;
+}
+
+.display h3{
+    width: 320px;
+}
