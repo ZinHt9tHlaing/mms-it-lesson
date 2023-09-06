@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List Builder</title>
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+
+  <body>
+    <main id="app">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-6 col=lg-4">
+            <div class="p-4" id="listBuilder">
+              <!-- header -->
+              <h1 class="fw-bold mb-4">List Builder</h1>
+
+              <!-- input box -->
+              <div class="input-group mb-4">
+                <input
+                  type="text"
+                  id="textInput"
+                  class="form-control form-control-lg"
+                />
+                <button id="addBtn" class="btn btn-lg btn-primary">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+
+              <!-- Your Lists -->
+              <div class="d-flex justify-content-between">
+                <h4 class="fw-bold">Your Lists</h4>
+
+                <p
+                  class="text-white fw-light bg-primary rounded-pill py-1 px-3"
+                >
+                  Done (
+                  <span id="doneListCounter">0</span> /
+                  <span id="totalListCounter">0</span>
+                  )
+                </p>
+              </div>
+
+              <!-- add lists -->
+              <div class="" id="lists"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/list.js"></script>
+  </body>
+</html>
