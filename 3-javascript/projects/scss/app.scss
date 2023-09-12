@@ -19,3 +19,24 @@ $form-check-input-border-radius: 0;
 $btn-border-width: 2px;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.slide-from-left {
+  animation: backInLeft 1s;
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.record-empty-row:last-child{
+  display: table-row;
+}
+
+.record-empty-row{
+  display: none;
+}

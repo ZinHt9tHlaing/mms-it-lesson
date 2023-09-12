@@ -37,12 +37,18 @@ const countList = () => {
   ).length;
 
   if (totalList === 0) {
-    lists.innerHTML = `<p class='text-center fw-semibold empty-stage'>There is no List</p>`;
+    lists.innerHTML = `
+    <div class='text-center fw-semibold empty-stage'>
+      <div>
+        <img src="../images/empty.svg" class="mb-3" width="100" alt="empty">
+        <p>There is no List</p>
+      </div>
+    </div>`;
   } else {
     // lists.querySelector(".empty-stage") &&
     //   lists.querySelector(".empty-stage").remove();
 
-    lists.querySelector(".empty-stage")?.remove()
+    lists.querySelector(".empty-stage")?.remove();
   }
 };
 
@@ -51,10 +57,10 @@ const createList = (listText) => {
 
   const list = document.createElement("div");
   list.classList.add("list");
+
   list.innerHTML = `
-    
   <div
-    class="border border-2 border-primary p-3 d-flex justify-content-between align-items-center mb-3"
+    class="animate__animated animate__backInLeft border border-2 border-primary p-3 d-flex justify-content-between align-items-center mb-3"
 >
   <div class="form-check list-checker">
     <input
@@ -79,18 +85,33 @@ const createList = (listText) => {
 </div>
 
     `;
+
   const listDelBtn = list.querySelector(".list-del-btn");
   listDelBtn.addEventListener("click", () => {
     // console.log("U can Delete");
     const decision = window.confirm("U really should delete this?");
-    decision && list.remove();
+    if (decision) {
+      list
+        .querySelector(".animate__animated")
+        .classList.add("animate__bounceOutRight");
 
-    countList();
+      list
+        .querySelector(".animate__animated")
+        .addEventListener("animationend", () => {
+          list.remove();
+        });
+      countList();
+    }
   });
 
   const listChecker = list.querySelector(".list-checker");
   listChecker.addEventListener("click", () => {
     // console.log("U can check this");
+    list
+      .querySelector(".list-label")
+      .classList.add("text-decoration-line-through");
+
+    list.querySelector(".animate__animated").classList.add("animate__shakeX");
     countList();
   });
 
@@ -119,8 +140,16 @@ const createList = (listText) => {
 countList();
 
 addBtn.addEventListener("click", () => {
-  // console.log(textInput.value);
-  lists.append(createList(textInput.value));
+  const list = createList(textInput.value);
+  lists.append(list);
+  list
+    .querySelector(".animate__animated")
+    .addEventListener("animationend", () => {
+      console.log("Hello");
+      list
+        .querySelector(".animate__animated")
+        .classList.remove("animate__backInLeft", "animate__shakeX");
+    });
 
   countList();
 
@@ -137,5 +166,5 @@ const obj = {
   },
 };
 
-console.log(obj.a);
-console.log(obj.b);
+// console.log(obj.a);
+// console.log(obj.b);
