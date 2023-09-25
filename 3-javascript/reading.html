@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
+    />
+    <style>
+      h1:active {
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>San Kyi Tar</h1>
+
+    <!-- <h1 title="San Kyi Tar">Min Ga Lar Par</h1>
+    <button>Click Me</button> -->
+
+    <button><i class="bi bi-person"></i>User</button>
+
+    <ul>
+      <li>Apple</li>
+      <li>Orange</li>
+      <li>Mango</li>
+      <li>
+        Banana
+        <span>Example</span>
+      </li>
+    </ul>
+
+    <!-- <pre>
+        zin
+        htet
+        hlaing
+    </pre> -->
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel alias
+      consequatur sunt nisi eum! Cupiditate qui, consequatur omnis beatae ad
+      sequi ab at consectetur quidem assumenda ea similique fugiat earum.
+    </p>
+
+    <script>
+      const frg = document.createDocumentFragment();
+      const p = document.createElement("p");
+      p.innerText = "san kyi tar";
+
+      const p1 = document.createElement("p");
+      p1.innerText = "san kyi tar 1";
+
+      const p2 = document.createElement("p");
+      p2.innerText = "san kyi tar 2";
+
+      const t = document.createTextNode("haha");
+
+      frg.append(p);
+      frg.append(p1);
+      frg.append(p2);
+      frg.append(t);
+
+      document.body.append(frg);
+
+      console.log(frg);
+
+    //   const ul = document.querySelector("ul");
+    //   const span = document.querySelector("span");
+      // console.log(ul.nextElementSibling);
+      // console.log(span.closest("ul"));
+      // console.log(ul.childNodes);
+      // const btn = document.querySelector("button");
+      // console.log(btn);
+      // btn.innerHTML = `<i class='bi bi-bag'><i/> Bag`;
+      // console.log(btn.childNodes);
+      // btn.childNodes[1].nodeValue = "Bag";
+
+      // ul.className = "zhh";
+      // console.log(ul.firstElementChild);
+
+      // const h1 = document.querySelector("h1");
+      // const button = document.querySelector("button");
+
+      // h1.addEventListener("click",() => {
+      //     console.log("U click h1");
+      // })
+
+      // button.addEventListener("click",() => {
+      //     h1.style.backgroundColor = "red";
+      // })
+
+      // h1.contentEditable = true;
+
+      // console.dir(h1.title);
+      // h1.title = "MMS IT";
+    </script>
+  </body>
+</html>

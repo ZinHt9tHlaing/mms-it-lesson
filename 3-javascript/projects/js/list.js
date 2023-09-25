@@ -40,7 +40,7 @@ const countList = () => {
     lists.innerHTML = `
     <div class='text-center fw-semibold empty-stage'>
       <div>
-        <img src="../images/empty.svg" class="mb-3" width="100" alt="empty">
+        <img src="images/empty.svg" class="mb-3" width="100" alt="empty">
         <p>There is no List</p>
       </div>
     </div>`;
@@ -135,11 +135,7 @@ const createList = (listText) => {
   return list;
 };
 
-// process
-
-countList();
-
-addBtn.addEventListener("click", () => {
+const handleNewList = () => {
   const list = createList(textInput.value);
   lists.append(list);
   list
@@ -152,19 +148,30 @@ addBtn.addEventListener("click", () => {
     });
 
   countList();
-
   textInput.value = null;
+};
+
+// process
+
+countList();
+
+addBtn.addEventListener("click", handleNewList);
+
+textInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    handleNewList();
+  }
 });
 
-const obj = {
-  a: "aaa",
-  b: "bbb",
-  c: {
-    x: "xxx",
-    y: "yyy",
-    z: "zzz",
-  },
-};
+// const obj = {
+//   a: "aaa",
+//   b: "bbb",
+//   c: {
+//     x: "xxx",
+//     y: "yyy",
+//     z: "zzz",
+//   },
+// };
 
 // console.log(obj.a);
 // console.log(obj.b);

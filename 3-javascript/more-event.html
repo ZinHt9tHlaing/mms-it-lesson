@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #one,
+      #two {
+        border: 3px solid black;
+        padding: 50px;
+        display: inline-block;
+      }
+
+      /* .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        width: 40%;
+        height: 100px;
+      }
+
+      .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .container {
+        padding: 2px 16px;
+      }
+
+      .btn{
+        cursor: pointer;
+      }
+
+      .btn:focus{
+        background-color: red;
+      } */
+    </style>
+  </head>
+  <body>
+    <!-- <h1 id="title">Hello</h1>
+    <button id="changeBtn">Change Title</button> -->
+
+    <!-- <div id="one">
+      <div id="two">
+        <button id="three">Three Btn</button>
+      </div>
+    </div> -->
+
+    <!-- <a href="https://www.youtube.com" id="href">
+      <div class="card">
+        <button id="btn" class="btn">
+          Click
+        </button>
+      </div>
+    </a> -->
+
+    <input type="text" />
+    <ul>
+      <li>Apple</li>
+      <li>Orange</li>
+      <li>Mango</li>
+    </ul>
+
+    <script>
+      const input = document.querySelector("input");
+      const ul = document.querySelector("ul");
+      const lis = document.querySelectorAll("li");
+      console.log(lis);
+
+      // lis.forEach((li) => {
+      //   li.addEventListener("click", () => {
+      //     console.log(li.innerText);
+      //   });
+      // });
+
+      ul.addEventListener("click",(event) => {
+        console.log(event.target.innerText);
+      })
+
+      input.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+          const newLi = document.createElement("li");
+          newLi.innerText = input.value;
+          ul.append(newLi);
+          input.value = null;
+        }
+      });
+
+      // const ul = document.querySelector("ul");
+      // console.log(ul.children);
+
+      // const title = document.querySelector("#title");
+      // const changeBtn = document.querySelector("#changeBtn");
+      // const one = document.querySelector("#one");
+      // const two = document.querySelector("#two");
+      // const three = document.querySelector("#three");
+      // const href = document.querySelector("#href");
+      // const btn = document.querySelector("#btn");
+
+      // const events = ['click','mouseenter','mouseout'];
+      // events.forEach((event) => {
+      //   three.addEventListener(event,(e) => {
+      //     console.log(e);
+      //   })
+      // })
+
+      // href.addEventListener("click",(event) => {
+      //   console.log("It works 1");
+      // },false)
+
+      // btn.addEventListener("click",(event) => {
+      //   event.preventDefault();
+      //   event.stopPropagation();
+      //   console.log("It works 2");
+      // },false)
+
+      // one.addEventListener(
+      //   "click",
+      //   () => {
+      //     console.log("U click one");
+      //   },
+      //   false
+      // );
+
+      // two.addEventListener(
+      //   "click",
+      //   () => {
+      //     console.log("U click two");
+      //   },
+      //   false
+      // );
+
+      // three.addEventListener(
+      //   "click",
+      //   (event) => {
+      //     event.stopPropagation();
+      //     console.log("U click three");
+      //   },
+      //   false
+      // );
+
+      // let counter = 0;
+      // const handleChangeBtn = () => {
+      //   console.log("Change Title");
+      //   title.innerText = "San Kyi Tar";
+      //   counter++;
+      //   counter === 5 && changeBtn.removeEventListener("click", handleChangeBtn);
+      // };
+
+      // changeBtn.addEventListener("click", handleChangeBtn);
+    </script>
+  </body>
+</html>

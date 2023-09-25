@@ -48,8 +48,30 @@ const recordAddBtn = app.querySelector("#recordAddBtn");
 const records = app.querySelector("#records");
 const totalCost = app.querySelector("#totalCost");
 const printer = app.querySelector("#printer");
+const itemLists = app.querySelector("#itemLists");
+const newItemForm = app.querySelector("#newItemForm");
 
 // functions
+const createItem = (product) => {
+  const li = document.createElement("li");
+  li.classList.add(
+    "list-group-item",
+    "mb-3",
+    "py-3",
+    "border-3",
+    "border-primary"
+  );
+  li.innerHTML = `
+    <div class="d-flex justify-content-between">
+      <p class="mb-0">${product.name}</p>
+      <p class="mb-0 text-black-50">
+        <span>${product.price}</span>
+        MMK
+      </p>
+    </div>
+  `;
+  return li;
+};
 
 // const createProductOption = (product) => {
 //   const option = document.createElement("option");
@@ -99,7 +121,9 @@ const createRecordRow = (product, quantity) => {
 
   const rowQuantityDecrement = tr.querySelector(".row-quantity-decrement");
   rowQuantityDecrement.addEventListener("click", () => {
-    updateExistedRecord(product, -1);
+    const row = document.querySelector(`[row-product-id='${product.id}']`);
+    const currentRowQuantity = row.querySelector(".row-quantity");
+    currentRowQuantity.innerText > 1 && updateExistedRecord(product, -1);
   });
 
   return tr;
@@ -126,23 +150,15 @@ const addNewRecord = (product, quantity) => {
 
 const updateExistedRecord = (product, quantity) => {
   const row = document.querySelector(`[row-product-id='${product.id}']`);
-
   const currentRowQuantity = row.querySelector(".row-quantity");
   const currentRowCost = row.querySelector(".row-cost");
 
-  if (quantity < 0) {
-    if (currentRowQuantity.innerText > 1) {
-      currentRowQuantity.innerText =
-        parseFloat(currentRowQuantity.innerText) + parseFloat(quantity);
+  currentRowQuantity.innerText =
+    parseFloat(currentRowQuantity.innerText) + parseFloat(quantity);
 
-      currentRowCost.innerText = currentRowQuantity.innerText * product.price;
-    }
-  } else {
-    currentRowQuantity.innerText =
-      parseFloat(currentRowQuantity.innerText) + parseFloat(quantity);
+  currentRowCost.innerText = currentRowQuantity.innerText * product.price;
 
-    currentRowCost.innerText = currentRowQuantity.innerText * product.price;
-  }
+  costTotal();
 };
 
 const handleRecordForm = (event) => {
@@ -173,14 +189,32 @@ const handleRecordForm = (event) => {
   costTotal();
 };
 
+const handleNewItem = (event) => {
+  event.preventDefault();
+  const newProduct = {};
+  const formData = new FormData(newItemForm);
+  newProduct.id = products[products.length - 1].id + 1;
+  newProduct.name = formData.get("new_item_name");
+  newProduct.price = formData.get("new_item_price");
+
+  itemLists.append(createItem(newProduct));
+  productSelect.append(new Option(newProduct.name, newProduct.id));
+  products.push(newProduct);
+  newItemForm.reset();
+};
+
 // process
 products.forEach((product) => {
   //   productSelect.append(createProductOption(product));
   productSelect.append(new Option(product.name, product.id));
+  itemLists.append(createItem(product));
 });
 
 recordForm.addEventListener("submit", handleRecordForm);
+newItemForm.addEventListener("submit", handleNewItem);
 
-printer.addEventListener("click",() => {
+printer.addEventListener("click", () => {
   print();
-})
+  document.querySelectorAll(".record-row").forEach(el => el.remove());
+  totalCost.innerText = 0;
+});
