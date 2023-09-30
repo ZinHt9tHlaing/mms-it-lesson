@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Padauk:wght@400;700&family=Rubik:ital,wght@0,300;0,400;1,700&display=swap");
+
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
+
+@import "../node_modules/animate.css/animate.css";
+
+$headings-font-family: "Montserrat", sans-serif;
+$font-family-sans-serif: "Rubik", "Padauk", sans-serif;
+
+$primary: #333333;
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+
+$input-border-color: $primary;
+$input-border-width: 2px;
+
+$form-check-input-border-radius: 0;
+
+$btn-border-width: 2px;
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.slide-from-left {
+  animation: backInLeft 1s;
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.record-empty-row:last-child {
+  display: table-row;
+}
+
+.record-empty-row {
+  display: none;
+}
+
+body {
+  /* Set "my-sec-counter" to 0 */
+  counter-reset: row-count;
+}
+
+.row-num::before {
+  /* Increment "row-count" by 1 */
+  counter-increment: row-count;
+  content: counter(row-count);
+}
+
+.record-row {
+}
+
+.row-control {
+  position: relative;
+}
+
+.row-delete {
+  position: absolute;
+  left: 100%;
+  top: 3px;
+  opacity: 0;
+  transform: translateX(1 0px);
+  transition: 0.5s;
+  pointer-events: none;
+  // bottom: 0;
+  // margin: auto;
+}
+
+.record-row:hover .row-delete {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+.row-quantity-control {
+  // transition: 0.5s;
+}
+
+.row-quantity-decrement,
+.row-quantity-increment {
+  background-color: #e2e3e5;
+  color: $primary;
+  opacity: 0;
+  transition: 0.5s;
+  pointer-events: all;
+  display: inline-block;
+  user-select: none;
+  cursor: pointer;
+}
+
+.row-quantity {
+  display: inline-block;
+  width: 10px;
+}
+
+.row-quantity-decrement {
+  transform: translateX(-10px);
+}
+
+.row-quantity-increment {
+  transform: translateX(10px);
+}
+
+.record-row:hover .row-quantity-decrement,
+.record-row:hover .row-quantity-increment {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
