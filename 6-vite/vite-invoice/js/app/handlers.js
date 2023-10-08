@@ -1,6 +1,13 @@
+import { Offcanvas } from "bootstrap";
 import { createItem } from "../products";
 import { addRecord, calculateRecordCostTotal, updateRecord } from "../record";
-import { itemLists, productSelect, recordForm, totalCost } from "./selectors";
+import {
+  itemLists,
+  myInventory,
+  productSelect,
+  recordForm,
+  totalCost,
+} from "./selectors";
 import { products } from "./variables";
 
 export const recordFormHandler = (event) => {
@@ -19,12 +26,10 @@ export const recordFormHandler = (event) => {
   if (isExistedProduct) {
     updateRecord(currentProduct, formData.get("quantityInput"));
   } else {
-    addRecord(currentProduct, formData.get("quantityInput"));
+    +addRecord(currentProduct, formData.get("quantityInput"));
   }
 
   recordForm.reset();
-
-  calculateRecordCostTotal();
 };
 
 export const newItemFormHandler = (event) => {
@@ -45,4 +50,15 @@ export const printerHandler = () => {
   print();
   document.querySelectorAll(".record-row").forEach((el) => el.remove());
   totalCost.innerText = 0;
+};
+
+export const inventoryBtnHandler = () => {
+  const myInventoryOffcanvas = new Offcanvas(myInventory, {
+    backdrop: "static",
+  });
+  myInventoryOffcanvas.show();
+
+  myInventory.addEventListener("hide.bs.offcanvas", () => {
+    console.log("U close inventory");
+  });
 };

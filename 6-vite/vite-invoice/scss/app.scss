@@ -21,6 +21,9 @@ $btn-border-width: 2px;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+@import 'sweetalert2/src/sweetalert2.scss';
+@import "toastify-js/src/toastify.css";
+
 .slide-from-left {
   animation: backInLeft 1s;
 }
