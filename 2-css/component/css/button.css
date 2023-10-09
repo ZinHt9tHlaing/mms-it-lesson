@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+:root {
+  --primary: #9c1de7;
+  --secondary: #303a52;
+  --danger: #fc5185;
+  --main-font: "Montserrat", sans-serif;
+}
+
+* {
+  font-family: var(--main-font);
+}
+
+.btn {
+  display: inline-block;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  line-height: 36px;
+  font-size: 12px;
+  /* text-transform: uppercase; */
+}
+
+.btn-icon {
+  padding: 0;
+  width: 40px;
+}
+
+.btn-pill {
+  border-radius: 20px;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  border: 2px solid var(--secondary);
+  color: #ffffff;
+}
+
+.btn-danger {
+  background-color: var(--danger);
+  border: 2px solid var(--danger);
+  color: #ffffff;
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+}
+
+.btn-outline-danger {
+  background-color: transparent;
+  border: 2px solid var(--danger);
+  color: var(--danger);
+}
