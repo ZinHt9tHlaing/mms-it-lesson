@@ -1,0 +1,18 @@
+.form-select{
+    display: block;
+    width: 100%;
+    border: 2px solid black;
+    padding: 0 15px;
+    height: 44px;
+    line-height: 44px;
+    appearance: none;
+    background-image: url("../../img/drop-down.svg");
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+.form-select:focus-visible{
+    outline: none;
+    /* border-color: gray; */
+}

@@ -1,0 +1,27 @@
+.body-bg{
+  background-image: url(../img/bg.jpg);
+  background-size: cover;
+}
+
+main {
+  padding: 20px;
+}
+
+.main-heading {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+
+.login {
+  border: 1px solid rgb(184, 184, 184);
+  padding: 40px;
+  width: 450px;
+  margin: 100px auto;
+  background: #fff;
+}
+
+.login-title {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+}

@@ -1,0 +1,20 @@
+.form-check-label{
+    /* text-transform: uppercase; */
+}
+
+.form-check{
+
+    /* accent-color: orange; */
+    width: 18px;
+    height: 18px;
+    border: 2px solid black;
+    appearance: none;
+}
+
+.form-check:checked{
+    background-color: rgb(0, 0, 0);
+    background-image: url(../../img/check.svg);
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

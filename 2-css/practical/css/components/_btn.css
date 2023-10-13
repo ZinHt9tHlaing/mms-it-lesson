@@ -1,0 +1,66 @@
+/* component class */
+
+.btn {
+  background-color: #b3b3b3;
+  border: 2px solid #b3b3b3;
+  padding: 0 24px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-size: 0.8em;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  text-align: center;
+}
+
+/* utilities classes */
+
+.btn-primary {
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  border: 2px solid var(--secondary);
+  /* color: var(--primary); */
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn-dark {
+  background-color: black;
+  border: 2px solid black;
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+}
+
+.btn-outline-accent {
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}

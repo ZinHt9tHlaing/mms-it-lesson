@@ -1,0 +1,19 @@
+
+.form-label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-input{
+    display: block;
+    width: 100%;
+    border: 2px solid black; 
+    padding: 0 15px;
+    height: 44px;
+    line-height: 44px;
+}
+
+.form-input:focus-visible{
+    outline: none;
+    /* border-color: gray; */
+}

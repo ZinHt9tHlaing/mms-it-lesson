@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Form</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class=" body-bg">
+    <main>
+      <!-- hein htet zan -->
+      <!-- heinHtetZan -->
+      <!-- hein-htet-zan -->
+      <!-- hein_htet_zan -->
+      <!-- HeinHtetZan -->
+
+      <section class="login">
+        <h3 class="login-title">
+          <i class="fa-solid fa-user"></i>
+          Student Register
+        </h3>
+
+        <form id="studentRegister" method="get" action="https://mms-it.com">
+          <div class="mb-20">
+            <label class="form-label" for="yourName">Your Name</label>
+            <input
+              type="text"
+              id="yourName"
+              class="form-input"
+              name="your_name"
+            />
+          </div>
+          <div class="mb-20">
+            <label class="form-label" for="loginEmail">Login Email</label>
+            <input
+              type="email"
+              id="loginEmail"
+              class="form-input"
+              name="login_email"
+            />
+          </div>
+          <div class="mb-20">
+            <label class="form-label" for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-input"
+              name="password"
+            />
+          </div>
+
+          <div class="mb-20">
+            <label class="form-label"> Your Gender </label>
+            <div class="form-radio-group">
+                <input type="radio" value="male" id="male" name="gender" class="form-radio">
+                <label class="form-radio-label" for="male">Male</label>
+            </div>
+
+            <div class="form-radio-group">
+                <input type="radio" value="female" id="female" name="gender" class="form-radio">
+                <label class="form-radio-label" for="female">Female</label>
+            </div>
+
+            <div class="form-radio-group">
+                <input type="radio" value="other" id="other" name="gender" class="form-radio">
+                <label class="form-radio-label" for="other">Other</label>
+            </div>
+          </div>
+
+          <div class="mb-40">
+            <label class="form-label" for="type"> Select User Type </label>
+            <select class="form-select" name="type" id="type">
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </select>
+          </div>
+
+         
+
+          <div class="mb-20">
+
+            <input id="agree" name="agree" class="form-check" value="agree" type="checkbox">
+            <label for="agree" class="form-check-label">All agree</label>
+          </div>
+
+          <button class="btn btn-dark d-block w-100">Register Now</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

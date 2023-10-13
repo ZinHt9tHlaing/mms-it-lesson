@@ -1,0 +1,7 @@
+/* css variables ( store data, reuse, overwrite ) */
+
+:root{
+    --primary : #ff5959;
+    --secondary : #085f63;
+    --accent : #facf5a;
+}

@@ -1,0 +1,38 @@
+.price-tag{
+    background-color: #377bff;
+    height: 40px;
+    width: 100px;
+    line-height: 40px;
+    text-align: center;
+    /* padding: 0 20px; */
+    display: inline-block;
+    margin: 20px;
+    position: relative;
+    color: white;
+
+}
+
+.price-tag::after{
+    content: " ";
+    position: absolute;
+    border: 20px solid transparent;
+    border-right-width: 0;
+    border-left-color: #377bff;
+    top: 0;
+    left: 100px;
+    z-index: 2;
+}
+
+.price-tag::before{
+    content: " ";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 50%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 90px;
+    z-index: 3;
+}
