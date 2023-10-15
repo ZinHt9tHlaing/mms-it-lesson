@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../dist/output.css">
+    <title>Button & Pseudo</title>
+    <link rel="stylesheet" href="../dist/output.css" />
   </head>
   <body>
     <div class="p-4">
@@ -13,7 +13,7 @@
         <h1 class="mb-4 font-serif text-2xl font-bold">Solid Buttons</h1>
 
         <button
-          class="border-2 border-blue-600 bg-blue-600 px-4 py-2 font-mono text-sm text-white"
+          class="border-2 border-blue-600 hover:bg-blue-400 bg-blue-600 active:bg-blue-900 px-4 py-2 font-mono text-sm text-white"
         >
           Click Me
         </button>
@@ -33,7 +33,7 @@
         <h1 class="mb-4 font-serif text-2xl font-bold">Outline Buttons</h1>
 
         <button
-          class="border-2 border-blue-600 px-4 py-2 font-mono text-sm text-blue-600"
+          class="border-2 hover:bg-blue-600 hover:text-white duration-500 hover:-rotate-12 border-blue-600 px-4 py-2 font-mono text-sm text-blue-600"
         >
           Click Me
         </button>
@@ -63,6 +63,22 @@
           Click Me
         </button>
       </div>
+
+      <div class="mb-4 border border-gray-400 p-4">
+        <h1 class="mb-4 font-serif text-2xl font-bold">Inputs</h1>
+        <input
+          type="text"
+          class="border-4 focus-visible:outline-none focus:border-red-600 border-blue-600 p-2"
+        />
+      </div>
+
+      <div class="mb-4 border border-gray-400 p-4">
+        <h1 class="mb-4 font-serif text-2xl font-bold">Checkbox</h1>
+        
+        <!-- <input type="checkbox" class="check-box"> -->
+        <input type="checkbox" class="switch">
     </div>
+
+    <div class="h-screen"></div>
   </body>
 </html>

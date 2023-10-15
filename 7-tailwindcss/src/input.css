@@ -1,5 +1,50 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
 
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Montserrat:wght@300;400;600;700&family=Young+Serif&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* .check-box{
+    appearance: none;
+    border: 3px solid blue;
+    width: 20px;
+    height: 20px;
+}
+
+.check-box:checked{
+    background-color: skyblue;
+} */
+
+.check-box {
+  @apply appearance-none;
+  @apply border-[3px] border-solid border-blue-600;
+  @apply w-[20px] h-[20px];
+
+  &:checked {
+    @apply bg-sky-300;
+  }
+}
+
+.switch {
+  @import url("https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Montserrat:wght@300;400;600;700&family=Young+Serif&display=swap");
+
+  @apply appearance-none;
+  @apply border-4 border-blue-600;
+  @apply w-[150px] h-[60px] rounded-full relative;
+
+  &::before {
+    content: "";
+    @apply absolute top-[6px] left-[6px] w-[40px] h-[40px] bg-red-600 rounded-full duration-500;
+  }
+
+  &:checked {
+    @apply bg-slate-300;
+
+    &::before {
+      content: "";
+      @apply translate-x-[90px] bg-green-700;
+    }
+  }
+}

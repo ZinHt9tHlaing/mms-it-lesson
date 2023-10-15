@@ -2,8 +2,19 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        para: ["Montserrat", "sans-serif"],
+        heading: ["Young Serif", "serif"],
+        code: ["Fragment Mono", "monospace"],
+      },
+      colors: {
+        primary: "#377dff",
+      },
+    },
   },
-  plugins: [],
-}
-
+  plugins: [
+    require("@tailwindcss/typography"),
+    // ...
+  ],
+};
