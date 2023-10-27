@@ -36,7 +36,7 @@
           <!-- cart btn -->
           <button
             id="cartBtn"
-            class="border border-neutral-700 bg-neutral-700 p-3"
+            class="border border-neutral-700 bg-neutral-700 p-3 relative"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -52,6 +52,12 @@
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
               />
             </svg>
+
+            <span
+              class="absolute bg-red-500 border-2 border-white text-[10px] flex justify-center items-center text-white w-6 h-6 rounded-full top-0 right-0 translate-x-1/2 -translate-y-1/2"
+              id="cartBtnCount"
+              >0</span
+            >
           </button>
         </div>
       </header>
@@ -68,7 +74,7 @@
         <!-- offcanvas -->
         <section
           id="cartUi"
-          class=" overflow-auto scroll-smooth w-[380px] h-screen translate-x-full duration-300 bg-neutral-100 fixed z-50 right-0 top-0 border-s-2 border-neutral-700"
+          class="overflow-auto scroll-smooth w-[380px] h-screen translate-x-full bg-neutral-100 fixed z-50 right-0 top-0 border-s-2 border-neutral-700"
         >
           <div class="h-full flex flex-col">
             <div
@@ -76,7 +82,14 @@
             >
               <div class="">
                 <h3 class="font-bold text-2xl">Shopping Cart</h3>
-                <p class="text-neutral-400">Your Items</p>
+                <p class="text-neutral-400">
+                  Your Items Count
+                  <span
+                    class="bg-red-500 text-white text-sm px-2 py-1 rounded"
+                    id="cartCount"
+                    >0</span
+                  >
+                </p>
               </div>
 
               <button id="closeCart" class="border border-neutral-700 p-3">
@@ -96,7 +109,7 @@
                 </svg>
               </button>
             </div>
-            <div id="cartItems" class="cart-items flex-grow p-4 lime">
+            <div id="cartItems" class="cart-items h-auto overflow-scroll scroll-smooth flex-grow p-4">
               <div
                 class="h-full hidden last:flex flex-col justify-center items-center"
               >
@@ -109,9 +122,9 @@
             >
               <div class="mb-3 text-end">
                 <p class="text-neutral-400">Total Amount</p>
-                <p class="text-3xl">$ <span>1325.45</span></p>
+                <p class="text-3xl">$ <span id="cartTotalAmount">0</span></p>
               </div>
-              <button class="block w-full bg-neutral-700 text-white py-3">
+              <button id="orderNow" class="block w-full bg-neutral-700 text-white py-3">
                 Order Now
               </button>
             </div>

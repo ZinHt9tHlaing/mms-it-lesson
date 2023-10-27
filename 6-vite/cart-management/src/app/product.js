@@ -1,9 +1,20 @@
-import { cartItems, cartUi, productSection } from "../core/selectors";
+import {
+  cartBtnCount,
+  cartCount,
+  cartItems,
+  cartTotalAmount,
+  cartUi,
+  productSection,
+} from "../core/selectors";
 import { products } from "../core/variables";
-import { createCartUi } from "./cart";
+import {
+  calculateCartAmountTotal,
+  calculateCartCount,
+  createCartUi,
+} from "./cart";
 
 export const productRender = (list) => {
-  // console.log(list[0]);
+  productSection.innerHTML = "";
   list.forEach((el) => productSection.append(createProductCard(el)));
 };
 
@@ -44,6 +55,8 @@ export const createProductCard = ({
   rating: { count, rate },
 }) => {
   const card = document.createElement("div");
+  const isCardItem = cartItems.querySelector(`[product-id='${id}']`);
+
   card.classList.add("product-card");
   card.setAttribute("data-id", id);
   card.innerHTML = `
@@ -72,10 +85,12 @@ export const createProductCard = ({
               <p class="mb-2 font-bold font-heading text-xl">
                 $ <span>${price}</span>
               </p>
-              <button
-                class="add-to-cart-btn border border-neutral-700 w-full p-3 text-neutral-700"
+              <button ${isCardItem && "disabled"}
+                class="add-to-cart-btn border font-heading border-neutral-700 w-full p-3 ${
+                  isCardItem && "bg-neutral-700 text-white"
+                }"
               >
-                Add to Cart
+                ${isCardItem ? "Added" : "Add to Cart"}
               </button>
             </div>
           </div>
@@ -88,8 +103,14 @@ export const createProductCard = ({
 };
 
 const addToCartBtnHandler = (event) => {
-  const currentId = event.target.closest(".product-card").getAttribute("data-id");
-  const currentProduct = products.find(el => el.id == currentId);
-  console.log(currentProduct);
-  cartItems.append(createCartUi(currentProduct))
+  const btn = event.target;
+  const currentId = event.target
+    .closest(".product-card")
+    .getAttribute("data-id");
+  btn.innerText = "Added";
+  btn.toggleAttribute("disabled");
+  btn.classList.add("bg-neutral-700", "text-white");
+  const currentProduct = products.find((el) => el.id == currentId);
+  // console.log(currentProduct);
+  cartItems.append(createCartUi(currentProduct));
 };

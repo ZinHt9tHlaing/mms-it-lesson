@@ -1,12 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Rubik:wght@400;600;700&family=Young+Serif&display=swap');
 
+@import url("../node_modules/sweetalert2/dist/sweetalert2.min.css");
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.swal2-confirm{
+    @apply bg-neutral-700 !important;
+}
+
+.swal2-cancel{
+    @apply bg-neutral-200 text-neutral-700 !important;
+}
+
+.swal2-title{
+    @apply font-heading;
+}
+
 
 .categories-badge{
-    @apply border border-neutral-700 px-[12px] py-2;
+    @apply capitalize border border-neutral-700 px-[12px] py-2;
 }
 
 .categories-badge.active{
