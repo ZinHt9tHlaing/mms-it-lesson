@@ -2,6 +2,7 @@
 
 @import url("../node_modules/sweetalert2/dist/sweetalert2.min.css");
 
+@import url(../node_modules/animate.css/animate.min.css);
 
 @tailwind base;
 @tailwind components;
@@ -21,11 +22,11 @@
 
 
 .categories-badge{
-    @apply capitalize border border-neutral-700 px-[12px] py-2;
+    @apply block basis-1/5 capitalize border-b-4 border-neutral-700 px-[12px] py-2 duration-150;
 }
 
 .categories-badge.active{
-    @apply bg-neutral-700 text-white;
+    @apply border-4 border-b-0;
 }
 
 .product-card{}

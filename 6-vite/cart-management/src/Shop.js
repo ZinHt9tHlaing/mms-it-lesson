@@ -1,8 +1,8 @@
 import { cartObserver } from "./app/cart";
 import { categoryRender } from "./app/category";
 import { productRender } from "./app/product";
-import { cartBtnHandler, categoryListHandler } from "./core/handlers";
-import { cartBtn, categoryLists } from "./core/selectors";
+import { cartBtnHandler, categoryListHandler, orderNowHandler, searchHandler } from "./core/handlers";
+import { cartBtn, categoryLists, orderNow, searchBtn } from "./core/selectors";
 import { categories, products } from "./core/variables";
 
 export class Shop {
@@ -15,6 +15,10 @@ export class Shop {
     cartBtn.addEventListener("click", cartBtnHandler);
     closeCart.addEventListener("click", cartBtnHandler);
     categoryLists.addEventListener("click", categoryListHandler);
+    orderNow.addEventListener("click", orderNowHandler);
+    searchBtn.addEventListener("click", () => {
+      searchHandler("wo")
+    });
   }
 
   observer() {

@@ -1,4 +1,5 @@
 import {
+  cartBtn,
   cartBtnCount,
   cartCount,
   cartItems,
@@ -102,15 +103,77 @@ export const createProductCard = ({
   return card;
 };
 
-const addToCartBtnHandler = (event) => {
-  const btn = event.target;
-  const currentId = event.target
-    .closest(".product-card")
-    .getAttribute("data-id");
+export const setCartAddedBtn = (productId) => {
+  const btn = app.querySelector(`[data-id="${productId}"] .add-to-cart-btn`);
+
   btn.innerText = "Added";
   btn.toggleAttribute("disabled");
   btn.classList.add("bg-neutral-700", "text-white");
+};
+
+export const removeCartAddedBtn = (productId) => {
+  const btn = app.querySelector(`[data-id="${productId}"] .add-to-cart-btn`);
+
+  btn.innerText = "Add to Cart";
+  btn.toggleAttribute("disabled");
+  btn.classList.remove("bg-neutral-700", "text-white");
+};
+
+const addToCartBtnHandler = (event) => {
+  const btn = event.target;
+  const currentCart = event.target.closest(".product-card");
+  const currentCartImg = currentCart.querySelector("img");
+  const currentId = currentCart.getAttribute("data-id");
+
+  setCartAddedBtn(currentId);
+
   const currentProduct = products.find((el) => el.id == currentId);
-  // console.log(currentProduct);
   cartItems.append(createCartUi(currentProduct));
+
+  const img = currentCartImg.getBoundingClientRect();
+  const cart = cartBtn.querySelector("svg").getBoundingClientRect();
+
+  console.log(img);
+  console.log(cart);
+
+  const animation = [
+    {
+      top: img.top + "px",
+      left: img.left + "px",
+      width: img.width + "px",
+      rotate: 0 + "deg",
+    },
+    {
+      top: cart.top + "px",
+      left: cart.left + "px",
+      width: 0,
+      rotate: 360 + "deg",
+    },
+  ];
+
+  const timing = {
+    duration: 800,
+    iterations: 1,
+  };
+
+  // send cardImg to cart
+  const newImg = new Image(img.width);
+  newImg.src = currentCartImg.src;
+  newImg.style.position = "fixed";
+  newImg.style.zIndex = 51;
+  newImg.style.top = img.top + "px";
+  newImg.style.left = img.left + "px";
+
+  document.body.append(newImg);
+
+  setTimeout(() => {
+    // cart animation
+    cartBtn.classList.add("animate__rubberBand");
+    cartBtn.addEventListener("animationend", () => {
+      cartBtn.classList.remove("animate__rubberBand");
+    });
+    newImg.remove();
+  }, 500);
+
+  newImg.animate(animation, timing);
 };

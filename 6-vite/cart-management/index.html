@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -36,7 +36,7 @@
           <!-- cart btn -->
           <button
             id="cartBtn"
-            class="border border-neutral-700 bg-neutral-700 p-3 relative"
+            class="border animate__animated border-neutral-700 bg-neutral-700 p-3 relative"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,11 +62,11 @@
         </div>
       </header>
 
-      <div class="h-28"></div>
+      <div id="headerSpacer" class="h-28"></div>
       <div class="w-full md:w-4/5 px-2 md:px-0 mx-auto">
         <section class="mb-11">
           <p class="mb-2 text-lg text-neutral-700">Product Categories</p>
-          <div id="categoryLists" class="flex gap-3">
+          <div id="categoryLists" class="flex">
             <button class="categories-badge active">All</button>
           </div>
         </section>
@@ -150,7 +150,7 @@
               >MMS IT</a
             >
           </p>
-          <button class="border border-white p-2">
+          <a href="#headerSpacer" id="scrollToTop" class="border border-white p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -165,7 +165,7 @@
                 d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18"
               />
             </svg>
-          </button>
+          </a>
         </footer>
       </div>
     </main>

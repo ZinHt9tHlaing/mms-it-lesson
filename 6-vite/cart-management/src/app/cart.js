@@ -5,6 +5,7 @@ import {
   cartItems,
   cartTotalAmount,
 } from "../core/selectors";
+import { removeCartAddedBtn } from "./product";
 
 export const createCartUi = ({ id, price, image, title }) => {
   const cart = document.createElement("div");
@@ -40,12 +41,14 @@ export const createCartUi = ({ id, price, image, title }) => {
     <p class="font-bold mb-3 line-clamp-1">${title}</p>
 
       <div class="flex justify-between">
-        <p class="text-neutral-500">$ <span class='cart-cost'>${price}</span></p>
+      <p class='hidden'>Price : $ <span class='original-price'>${price}</span></p>
+        <p class="text-neutral-500"> $ <span class='cart-cost'>${price}</span></p>
         <div
           class="flex w-[110px] bg-neutral-200 justify-between items-center"
         >
+
           <!-- minus -->
-          <button class="px-2 py-1 bg-neutral-300">
+          <button class="px-2 py-1 bg-neutral-300 cart-q-decrement">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -62,10 +65,10 @@ export const createCartUi = ({ id, price, image, title }) => {
             </svg>
           </button>
 
-          <p class="flex-grow text-center">1</p>
+          <p class="flex-grow text-center cart-q">1</p>
 
           <!-- plus -->
-          <button class="px-2 py-1 bg-neutral-300">
+          <button class="px-2 py-1 bg-neutral-300 cart-q-increment">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -91,6 +94,12 @@ export const createCartUi = ({ id, price, image, title }) => {
   const cartRemoveBtn = cart.querySelector(".cart-remove-btn");
   cartRemoveBtn.addEventListener("click", cartRemoveBtnHandler);
 
+  const cartQuantityDecrement = cart.querySelector(".cart-q-decrement");
+  cartQuantityDecrement.addEventListener("click", cartQuantityDecrementHandler);
+
+  const cartQuantityIncrement = cart.querySelector(".cart-q-increment");
+  cartQuantityIncrement.addEventListener("click", cartQuantityIncrementHandler);
+
   return cart;
 };
 
@@ -107,26 +116,50 @@ export const cartRemoveBtnHandler = (event) => {
     confirmButtonText: "Confirm",
   }).then((result) => {
     if (result.isConfirmed) {
-      currentCart.remove();
+      currentCart.classList.add("animate__animated", "animate__zoomOutRight");
 
-      const btn = app.querySelector(
-        `[data-id="${productId}"] .add-to-cart-btn`
-      );
-
-      btn.innerText = "Add to Cart";
-      btn.toggleAttribute("disabled");
-      btn.classList.remove("bg-neutral-700", "text-white");
+      currentCart.addEventListener("animationend", () => {
+        currentCart.remove();
+        removeCartAddedBtn(productId);
+      });
     }
   });
 };
 
+export const cartQuantityIncrementHandler = (event) => {
+  const currentCart = event.target.closest(".cart-item");
+  const currentQuantity = currentCart.querySelector(".cart-q");
+  const currentCardPrice = currentCart.querySelector(".original-price");
+  let currentCardCost = currentCart.querySelector(".cart-cost");
+  currentQuantity.innerText = parseInt(currentQuantity.innerText) + 1;
+
+  currentCardCost.innerText =
+    currentCardPrice.innerText * currentQuantity.innerText;
+};
+
+export const cartQuantityDecrementHandler = (event) => {
+  const currentCart = event.target.closest(".cart-item");
+  const currentQuantity = currentCart.querySelector(".cart-q");
+  const currentCardPrice = currentCart.querySelector(".original-price");
+  let currentCardCost = currentCart.querySelector(".cart-cost");
+
+  if (currentQuantity.innerText > 1) {
+    currentQuantity.innerText = parseInt(currentQuantity.innerText) - 1;
+    currentCardCost.innerText =
+      currentCardPrice.innerText * currentQuantity.innerText;
+  }
+};
+
 export const calculateCartAmountTotal = () => {
   const cartCost = app.querySelectorAll(".cart-cost");
-  return [...cartCost].reduce((pv, cv) => pv + parseFloat(cv.innerText), 0);
+  return [...cartCost]
+    .reduce((pv, cv) => pv + parseFloat(cv.innerText), 0)
+    .toFixed(2);
 };
 
 export const calculateCartCount = () => {
   const carts = app.querySelectorAll(".cart-item");
+
   return carts.length;
 };
 
