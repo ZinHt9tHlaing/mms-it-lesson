@@ -132,26 +132,46 @@ const addToCartBtnHandler = (event) => {
 
   const img = currentCartImg.getBoundingClientRect();
   const cart = cartBtn.querySelector("svg").getBoundingClientRect();
+  const cartItemUiRect = cartItems.getBoundingClientRect();
 
   console.log(img);
   console.log(cart);
 
-  const animation = [
-    {
-      top: img.top + "px",
-      left: img.left + "px",
-      width: img.width + "px",
-      rotate: 0 + "deg",
-    },
-    {
-      top: cart.top + "px",
-      left: cart.left + "px",
-      width: 0,
-      rotate: 360 + "deg",
-    },
-  ];
+  let effect;
 
-  const timing = {
+  if (cartUi.classList.contains("translate-x-full")) {
+    effect = [
+      {
+        top: img.top + "px",
+        left: img.left + "px",
+        width: img.width + "px",
+        rotate: 0 + "deg",
+      },
+      {
+        top: cart.top + "px",
+        left: cart.left + "px",
+        width: 0,
+        rotate: 360 + "deg",
+      },
+    ];
+  } else {
+    effect = [
+      {
+        top: img.top + "px",
+        left: img.left + "px",
+        width: img.width + "px",
+        rotate: 0 + "deg",
+      },
+      {
+        top: cartItemUiRect.top + 300 + "px",
+        left: cartItemUiRect.left + 200 + "px",
+        width: 0,
+        rotate: 360 + "deg",
+      },
+    ];
+  }
+
+  const timeline = {
     duration: 800,
     iterations: 1,
   };
@@ -166,14 +186,14 @@ const addToCartBtnHandler = (event) => {
 
   document.body.append(newImg);
 
-  setTimeout(() => {
-    // cart animation
+  // cart animation
+  const newImgAnimation = newImg.animate(effect, timeline);
+
+  newImgAnimation.addEventListener("finish", () => {
     cartBtn.classList.add("animate__rubberBand");
     cartBtn.addEventListener("animationend", () => {
       cartBtn.classList.remove("animate__rubberBand");
     });
     newImg.remove();
-  }, 500);
-
-  newImg.animate(animation, timing);
+  });
 };
