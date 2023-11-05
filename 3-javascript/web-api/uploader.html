@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Uploader</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+  </head>
+  <body>
+    <div class="p-5">
+      <h1 class="font-serif font-bold text-3xl mb-5">Click to Upload</h1>
+      <div
+        id="uploaderUi"
+        class="border-2 flex gap-x-3 overflow-scroll border-sky-500 border-dashed p-5 rounded-lg min-h-[150px] mb-5"
+      >
+        <div
+          class="group hidden last:flex w-full flex-col h-[150px] justify-center items-center select-none cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-12 h-12 mb-3 stroke-1 fill-sky-100 stroke-sky-400 group-hover:scale-75 group-active:scale-125 duration-150"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15"
+            />
+          </svg>
+
+          <p class="text-sky-400">Click to Select Photo</p>
+        </div>
+      </div>
+      <button
+        class="bg-sky-500 text-white px-4 py-2 rounded-lg hover:scale-x-110 active:scale-95 duration-150 cursor-pointer"
+        form="photoUploaderForm"
+      >
+        Upload Now
+      </button>
+    </div>
+
+    <form
+      action="http://localhost:8080/server.php"
+      id="photoUploaderForm"
+      class="hidden"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input
+        type="file"
+        name="photos[]"
+        id="photos"
+        multiple
+        accept="image/jpeg,image/png"
+        required
+      />
+    </form>
+
+    <script src="./src/js/uploader.js"></script>
+  </body>
+</html>
