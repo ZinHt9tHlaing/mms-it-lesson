@@ -36,7 +36,7 @@
 
     <!-- Meta Tags Generated with https://metatags.io -->
   </head>
-  <body>
+  <body class="scroll-smooth">
     <main id="app">
       <header
         class="w-full fixed z-50 left-0 right-0 md:w-4/5 px-2 md:px-0 mx-auto py-5 flex justify-between border-b-2 border-neutral-700 bg-white"
@@ -96,8 +96,25 @@
       <div class="w-full md:w-4/5 px-2 md:px-0 mx-auto">
         <section class="mb-11">
           <p class="mb-2 text-lg text-neutral-700">Product Categories</p>
-          <div id="categoryLists" class="flex max-w-full overflow-scroll gap-3 justify-stretch">
+          <div
+            id="categoryLists"
+            class="flex max-w-full overflow-scroll gap-3 justify-stretch"
+          >
             <button class="categories-badge active">All</button>
+            <div class="hidden last:flex animate-pulse gap-3">
+              <button class="categories-badge">
+                <div class="h-3 w-20 bg-gray-200 rounded-full"></div>
+              </button>
+              <button class="categories-badge">
+                <div class="h-3 w-20 bg-gray-200 rounded-full"></div>
+              </button>
+              <button class="categories-badge">
+                <div class="h-3 w-20 bg-gray-200 rounded-full"></div>
+              </button>
+              <button class="categories-badge">
+                <div class="h-3 w-20 bg-gray-200 rounded-full"></div>
+              </button>
+            </div>
           </div>
         </section>
 
@@ -171,7 +188,20 @@
         <section
           id="productSection"
           class="mb-10 gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-        ></section>
+        >
+          <div class="animate-pulse">
+            <div class="h-56 w-full bg-gray-200 rounded-lg"></div>
+          </div>
+          <div class="animate-pulse">
+            <div class="h-56 w-full bg-gray-200 rounded-lg"></div>
+          </div>
+          <div class="animate-pulse">
+            <div class="h-56 w-full bg-gray-200 rounded-lg"></div>
+          </div>
+          <div class="animate-pulse">
+            <div class="h-56 w-full bg-gray-200 rounded-lg"></div>
+          </div>
+        </section>
 
         <!-- footer -->
         <footer

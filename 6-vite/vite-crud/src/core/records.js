@@ -22,7 +22,7 @@ export const removeRecord = (id) => {
     redirect: "follow",
   }).then((res) => {
     if (res.status === 204) {
-      toast("Record Updated");
+      toast("Record Deleted");
     }
   });
 };
