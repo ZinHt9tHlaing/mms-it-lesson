@@ -454,7 +454,7 @@ const obj3 = {
 // const result = points.reduce((pv, cv) => {
 //   console.log(pv, cv);
 //   return pv + cv;
-// },0);
+// }, 0);
 
 // const result = points.reduce((pv, cv) => pv + cv);
 
@@ -485,7 +485,7 @@ const obj3 = {
 
 // const saleProducts = products.filter(product => product.price < 50);
 
-// console.log(saleProducts);
+// console.table(saleProducts);
 
 // console.log(points);
 // const lessThan30 = points.filter(point => {
@@ -497,11 +497,12 @@ const obj3 = {
 // console.table(student1Mark);
 
 // const result = student1Mark.map((subject) => {
-//   console.log(subject);
+//   // console.log(subject);
 //   // console.log(subject.mark >= 40 ? "passed" : "failed");
-//   subject.result = subject.mark >= 40 ? "passed" : "failed";
+// subject.result = subject.mark >= 40 ? "passed" : "failed";
 //   return subject;
 // });
+
 // console.table(result);
 
 // console.table(products);
@@ -659,13 +660,13 @@ let myName = "zin htet hlaing";
 //     .map(el => el.replace(el[0], el[0].toUpperCase()),
 // ).join());
 
-function toPascalCase(text) {
-  return text
-    .toLowerCase()
-    .split(" ")
-    .map((el) => el.replace(el[0], el[0].toUpperCase()))
-    .join("");
-}
+// function toPascalCase(text) {
+//   return text
+//     .toLowerCase()
+//     .split(" ")
+//     .map((el) => el.replace(el[0], el[0].toUpperCase()))
+//     .join("");
+// }
 
-console.log(toPascalCase(myName));
-console.log(toPascalCase("san kyi tar par"));
+// console.log(toPascalCase(myName));
+// console.log(toPascalCase("san kyi tar par"));
