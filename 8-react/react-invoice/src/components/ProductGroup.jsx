@@ -1,12 +1,14 @@
-import React from 'react'
-import Product from './Product'
+import React from "react";
+import Product from "./Product";
 
-const ProductGroup = () => {
+const ProductGroup = ({ products }) => {
   return (
     <div id="productGroup" className="p-3">
-      <Product />
+      {products.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default ProductGroup
+export default ProductGroup;
