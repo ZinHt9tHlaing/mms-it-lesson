@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import RecordTable from "./components/RecordTable";
 import Footer from "./components/Footer";
 import ProductDrawer from "./components/ProductDrawer";
+import Test from "./components/Test";
 
 const App = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -28,7 +29,8 @@ const App = () => {
 
   const addRecord = (newRecord) => setRecord([...records, newRecord]);
 
-  const removeRecord = (id) => setRecord(records.filter((record) => record.id != id));
+  const removeRecord = (id) =>
+    setRecord(records.filter((record) => record.id != id));
 
   return (
     <div className="max-w-[700px] px-5 lg:px-0 mx-auto min-h-screen flex flex-col">
@@ -42,6 +44,7 @@ const App = () => {
         handleDrawer={handleDrawer}
         openDrawer={openDrawer}
       />
+      {/* <Test /> */}
     </div>
   );
 };
