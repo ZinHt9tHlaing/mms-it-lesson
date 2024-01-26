@@ -1,15 +1,17 @@
 import React, { useContext, useState } from "react";
 import { DataContext } from "../contexts/DataContext";
+import { baseUrl } from "../config/config";
+import axios from "axios";
+import { courseApi } from "../api/course";
 
 const RowEditBtn = ({ id }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const { toggleEditDrawer,setEditCourse } = useContext(DataContext);
+  const { toggleEditDrawer, setEditCourse } = useContext(DataContext);
 
   const handleBtn = async () => {
     setIsLoading(true);
-    const res = await fetch("http://localhost:5173/api/courses/" + id);
-    const json = await res.json();
-    setEditCourse(json);
+    const res = await courseApi.get(`/courses/${id}`);
+    setEditCourse(res.data);
     setIsLoading(false);
 
     toggleEditDrawer();
