@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev":"tsc index.ts --watch"
+    "dev": "tsc --watch"
   },
   "dependencies": {
     "tsc": "^2.0.4",
