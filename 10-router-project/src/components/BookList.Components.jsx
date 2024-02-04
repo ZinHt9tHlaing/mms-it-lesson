@@ -1,7 +1,7 @@
 import React from "react";
 
 const BookListComponents = ({ data }) => {
-  console.log(data);
+
   return (
     <div className="w-[300px] h-[380px] border-2 rounded-xl dark:bg-gray-800 grid-cols-4 dark:border-gray-700 hover:bg-gray-700 my-5 hover:scale-95 hover:duration-300 hover:p-1 shadow">
       <div className="hover:scale-95 hover:duration-300 p-2">
