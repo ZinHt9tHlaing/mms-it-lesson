@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ButtonComponents, FormComponents } from "../components";
+import { addNewContact } from "../service/contact.service";
 
 const ContactAddPage = () => {
+  const nav = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -13,9 +17,13 @@ const ContactAddPage = () => {
     setFormData((pre) => ({ ...pre, [e.target.name]: e.target.value }));
   };
 
-  const handleFormPrevent = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    const res = await addNewContact(formData);
+    console.log(res);
+    if (res) {
+      nav("/");
+    }
   };
 
   return (
@@ -24,7 +32,7 @@ const ContactAddPage = () => {
         <h1 className=" font-serif text-2xl mb-10 text-center">
           Create Your Contact
         </h1>
-        <form onSubmit={handleFormPrevent} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <FormComponents
             value={formData.name}
             onChange={handleFormDataChange}
@@ -53,7 +61,7 @@ const ContactAddPage = () => {
             type={"text"}
             name={"address"}
           />
-          <ButtonComponents>Login here</ButtonComponents>
+          <ButtonComponents type="submit">Login here</ButtonComponents>
         </form>
       </div>
     </div>

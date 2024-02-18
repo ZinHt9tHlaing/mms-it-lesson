@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PreventComponents } from "../components";
 import { useNavigate, Outlet } from "react-router-dom";
+import { getProfile } from "../service/auth.service";
 
 const HomePage = () => {
   const nav = useNavigate();
@@ -9,8 +10,18 @@ const HomePage = () => {
     nav("/");
   };
 
-  
-const handleAddBtn = () => {
+  useEffect(() => {
+    (async () => {
+      const res = await getProfile();
+      // console.log(res);
+    })();
+  }, []);
+
+  const handleHomeBack = () => {
+    nav("/");
+  };
+
+  const handleAddBtn = () => {
     nav("/home/add");
   };
   return (
@@ -18,7 +29,12 @@ const handleAddBtn = () => {
       <div className=" container mx-auto h-screen">
         <div className="w-[80%] mx-auto h-full">
           <nav className="flex justify-between items-center px-2 py-3 shadow">
-            <h1 className="font-bold text-xl">Contact App</h1>
+            <button
+              onClick={handleHomeBack}
+              className="font-bold text-xl active:scale-95 duration-200"
+            >
+              Contact App
+            </button>
             <div className=" space-x-5">
               <button
                 onClick={handleAddBtn}

@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { getContactData } from "../service/contact.service";
+import { useParams } from "react-router-dom";
+import { getSingleContact } from "../service/contact.service";
 import { ContactCardComponents, LoadingComponents } from "../components";
 
-const ContactPage = () => {
+const DetailContactPage = () => {
   const [items, setItems] = useState({
     loading: true,
     data: null,
     error: null,
   });
 
+  const { id } = useParams();
+  console.log(id);
+
   useEffect(() => {
     (async () => {
       setItems((pre) => ({ ...pre, loading: true }));
-      const res = await getContactData();
+      const res = await getSingleContact(id);
       if (res.error) {
         setItems((pre) => ({ ...pre, loading: false, error: res.msg }));
       } else {
         setItems((pre) => ({ ...pre, loading: false, data: res }));
       }
     })();
-  }, []);
+  }, [id]);
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
@@ -30,9 +34,12 @@ const ContactPage = () => {
           {items.error ? (
             <h1>{items.error}</h1>
           ) : (
-            items.data.map((item) => (
-              <ContactCardComponents data={item} key={item.id} />
-            ))
+            <div>
+              <h1>{items.data.name}</h1>
+              <h1>{items.data.phone}</h1>
+              <h1>{items.data.email}</h1>
+              <h1>{items.data.address}</h1>
+            </div>
           )}
         </>
       )}
@@ -40,4 +47,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default DetailContactPage;
