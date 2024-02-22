@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getSingleContact } from "../service/contact.service";
 import { ContactCardComponents, LoadingComponents } from "../components";
 
+
 const DetailContactPage = () => {
   const [items, setItems] = useState({
     loading: true,
@@ -26,7 +27,7 @@ const DetailContactPage = () => {
   }, [id]);
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center">
+    <div className="w-full h-full flex flex-col justify-center items-center text-xl bg-gray-600 text-white ">
       {items.loading ? (
         <LoadingComponents />
       ) : (

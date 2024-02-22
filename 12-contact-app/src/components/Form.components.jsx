@@ -9,9 +9,9 @@ const FormComponents = ({ type, name, label, placeholder = "", ...rest }) => {
       <input
         {...rest}
         type={type}
+        className=" px-2 py-3 rounded mt-2 border-2 border-blue-300 active:scale-95 duration-200"
         name={name}
         id={name}
-        className=" px-2 py-3 rounded mt-2 border-2 border-blue-300 active:scale-95 duration-200"
         placeholder={placeholder}
       />
     </div>
