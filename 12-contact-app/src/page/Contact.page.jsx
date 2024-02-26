@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getContactData, deleteContact } from "../service/contact.service";
 import { ContactCardComponents, LoadingComponents } from "../components";
+import { useGetContactQuery } from "../store/services/endpoints/contact.endpoint";
 
 const ContactPage = () => {
-  const [items, setItems] = useState({
-    loading: true,
-    data: null,
-    error: null,
-  });
+  const { isError, isLoading, data, isSuccess } = useGetContactQuery();
+
+  console.log(isError, isLoading, data, isSuccess);
 
   const [deleteItem, setDeleteItem] = useState(false);
 
@@ -31,14 +30,14 @@ const ContactPage = () => {
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      {items.loading ? (
+      {isLoading ? (
         <LoadingComponents />
       ) : (
         <>
-          {items.error ? (
-            <h1>{items.error}</h1>
+          {isError ? (
+            <h1>{isError.message}</h1>
           ) : (
-            items.data.map((item) => (
+            data.contacts.data.map((item) => (
               <ContactCardComponents
                 handleDelete={handleDelete}
                 data={item}

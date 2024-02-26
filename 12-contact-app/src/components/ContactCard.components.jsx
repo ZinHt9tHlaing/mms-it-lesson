@@ -26,7 +26,7 @@ const ContactCardComponents = ({ data, handleDelete }) => {
           <p>{data.phone}</p>
         </div>
       </button>
-      <div className=" space-x-5">
+      <div className=" space-x-3">
         <button
           onClick={handleEdit}
           className="border border-gray-300 hover:p-3 rounded text-xl active:scale-95 p-2 duration-200"

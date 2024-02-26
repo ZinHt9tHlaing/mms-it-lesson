@@ -8,17 +8,15 @@ import {
   PreventComponents,
 } from "../components";
 import { useNavigate } from "react-router-dom";
-import useApi from "../hook/useApi";
 import { useSelector, useDispatch } from "react-redux";
-import { LoginAction } from "../store/action/auth.action";
+import { login, processing } from "../store/slice/auth.slice";
+import { Login } from "../service/auth.service";
 
 const LoginPage = () => {
   const nav = useNavigate();
-  const { auth, data, loading, error } = useSelector((store) => store.auth);
+  const { loading, error, data, auth } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
-
   const [formData, setFormData] = useState({ email: "", password: "" });
-  // const { handleDealApi, loading, error, data } = useApi(Login);
 
   const handleInputChange = (e) =>
     setFormData((pre) => ({ ...pre, [e.target.name]: e.target.value }));
@@ -29,9 +27,11 @@ const LoginPage = () => {
     }
   }, [data]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    LoginAction(dispatch, formData);
+    dispatch(processing()); // loading true
+    const res = await Login(formData);
+    dispatch(login(res.data));
   };
 
   return (
