@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { usePostTodoMutation } from "../store/service/endpoints/todo.endpoints";
 
-const Tool = ({ handleFetch }) => {
+const Tool = ({ handleRefetch }) => {
   const [fun, data] = usePostTodoMutation();
   const [todo, setTodo] = useState("");
 
@@ -10,17 +10,19 @@ const Tool = ({ handleFetch }) => {
     await fun({
       text: todo,
     });
-    handleFetch();
+    handleRefetch()
   };
 
   return (
-    <div>
+    <div className=" mb-5">
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
+          className=" border-2 border-gray-400 me-2 p-1 ps-3"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
-          className=" border-2 border-black me-4 px-1"
+          type="text"
+          name="todo"
+          id="todo"
         />
         <button
           type="submit"
@@ -29,7 +31,6 @@ const Tool = ({ handleFetch }) => {
           Submit
         </button>
       </form>
-      <hr className=" my-4 border border-gray-300" />
     </div>
   );
 };

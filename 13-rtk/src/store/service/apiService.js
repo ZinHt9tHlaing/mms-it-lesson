@@ -6,5 +6,5 @@ export const ApiService = createApi({
     baseUrl: "http://localhost:3000",
   }),
   endpoints: (builder) => ({}),
-  tagTypes: "todo",
+  tagTypes:"todo"
 });

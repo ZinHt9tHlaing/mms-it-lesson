@@ -7,21 +7,14 @@ const todoEndpoint = ApiService.injectEndpoints({
       providesTags: "todo",
     }),
     postTodo: builder.mutation({
-      query: (FormData) => ({
+      query: (formData) => ({
         url: "/todos",
-        body: FormData,
+        body: formData,
         method: "post",
       }),
       invalidatesTags: "todo",
     }),
-    deleteTodo: builder.mutation({
-      query: (id, FormData) => ({
-        url: "/todos",
-        body: FormData,
-        method: "delete",
-      }),
-    }),
   }),
 });
 
-export const { useGetTodoQuery, usePostTodoMutation,useDeleteTodoMutation } = todoEndpoint;
+export const { useGetTodoQuery, usePostTodoMutation } = todoEndpoint;
