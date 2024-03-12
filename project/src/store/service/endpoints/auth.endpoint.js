@@ -1,6 +1,6 @@
-import { apiService } from "../apiService";
+import { ApiService } from "../ApiService";
 
-const authEndpoints = apiService.injectEndpoints({
+const authEndpoints = ApiService.injectEndpoints({
   endpoints: (builder) => ({
     signIn: builder.mutation({
       query: (arg) => ({
@@ -11,7 +11,7 @@ const authEndpoints = apiService.injectEndpoints({
     }),
     signUp: builder.mutation({
       query: (arg) => ({
-        url: "register",
+        url: "/register",
         method: "POST",
         body: arg,
       }),
