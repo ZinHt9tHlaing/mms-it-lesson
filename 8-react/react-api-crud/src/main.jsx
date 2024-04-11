@@ -5,7 +5,7 @@ import "./index.css";
 import DataContextProvider from "./contexts/DataContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <DataContextProvider>
-    <App />
-  </DataContextProvider>
+    <DataContextProvider>
+        <App />
+    </DataContextProvider>
 );

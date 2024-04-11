@@ -1,8 +1,9 @@
 import React from "react";
 
 const LoaderRow = () => {
+
   return (
-    <tr className="bg-white animate-pulse border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+    <tr className="bg-white border-b animate-pulse dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
       <th
         scope="row"
         className="row-id px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -19,12 +20,12 @@ const LoaderRow = () => {
       <td className="px-6 py-4 cell-editable row-short">
         <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-20" />
       </td>
-      <td className="px-6 py-4 cell-editable row-fee">
-        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-42" />
+      <td className="px-6 py-4 cell-editable row-fee text-end">
+        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-40" />
       </td>
-      <td className="px-6 py-4 text-right flex gap-1">
-        <div className="h-10 w-10 bg-gray-300 rounded-full dark:bg-gray-600" />
-        <div className="h-10 w-10 bg-gray-300 rounded-full dark:bg-gray-300" />
+      <td className="px-6 py-4 text-right flex gap-1 justify-end">
+        <div className="bg-gray-300 w-10 h-10 rounded-full dark:bg-gray-600" />
+        <div className="bg-gray-300 w-10 h-10 rounded-full dark:bg-gray-600" />
       </td>
     </tr>
   );

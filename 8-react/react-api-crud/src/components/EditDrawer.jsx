@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { DataContext } from "../contexts/DataContext";
 
 const EditDrawer = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     editDrawer,
     toggleEditDrawer,
@@ -9,12 +11,10 @@ const EditDrawer = () => {
     updateCourse,
   } = useContext(DataContext);
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const idRef = useRef();
   const titleRef = useRef();
   const shortRef = useRef();
   const feeRef = useRef();
+  const idRef = useRef();
   const closeRef = useRef();
 
   const handleSubmit = async (event) => {
@@ -22,30 +22,36 @@ const EditDrawer = () => {
     const newCourse = {
       title: titleRef.current.value,
       short_name: shortRef.current.value,
-      fee: feeRef.current.value,
+      fee: feeRef.current.valueAsNumber,
     };
 
-    setIsLoading(true);
+    // console.log(closeRef.current.checked);
 
+    setIsLoading(true);
     const res = await fetch("http://localhost:5173/api/courses/" + id, {
       method: "PUT",
       headers: new Headers({ "Content-Type": "application/json" }),
       body: JSON.stringify(newCourse),
     });
+
     const json = await res.json();
+
     updateCourse(json);
 
     setIsLoading(false);
 
-    closeRef.current.checked && toggleEditDrawer();
+    if (closeRef.current.checked) {
+      toggleEditDrawer();
+    }
   };
 
   useEffect(() => {
-    console.log("edit drawer work");
-    idRef.current.value = id;
+    // console.log("edit drawer work");
+
     titleRef.current.value = title;
     shortRef.current.value = short_name;
     feeRef.current.value = fee;
+    idRef.current.value = id;
   }, []);
 
   return (
@@ -56,6 +62,8 @@ const EditDrawer = () => {
       }`}
       tabIndex={-1}
       aria-labelledby="drawer-right-label"
+      aria-modal="true"
+      role="dialog"
     >
       <h5
         id="drawer-right-label"
@@ -77,7 +85,7 @@ const EditDrawer = () => {
         type="button"
         data-drawer-hide="edit-drawer"
         aria-controls="edit-drawer"
-        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
+        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white active:scale-90 duration-200"
       >
         <svg
           className="w-3 h-3 pointer-events-none"
@@ -113,8 +121,8 @@ const EditDrawer = () => {
           </label>
           <input
             type="text"
-            disabled={isLoading}
             ref={titleRef}
+            disabled={isLoading}
             id="edit_course_title"
             name="edit_course_title"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -131,8 +139,8 @@ const EditDrawer = () => {
           </label>
           <input
             type="text"
-            disabled={isLoading}
             ref={shortRef}
+            disabled={isLoading}
             id="edit_short_name"
             name="edit_short_name"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -165,7 +173,6 @@ const EditDrawer = () => {
               type="checkbox"
               ref={closeRef}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              required
             />
             <label
               htmlFor="edit-default-checkbox"
@@ -175,9 +182,9 @@ const EditDrawer = () => {
             </label>
           </div>
           <button
-            disabled={isLoading}
             type="submit"
-            className="group text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 disabled:opacity-70"
+            disabled={isLoading}
+            className="group text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 disabled:opacity-70 active:scale-95 duration-200"
           >
             <span className="inline group-disabled:hidden">Update</span>
             <span className="hidden group-disabled:flex items-center gap-2">

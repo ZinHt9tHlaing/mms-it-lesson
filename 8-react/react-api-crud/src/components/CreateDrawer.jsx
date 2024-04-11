@@ -1,25 +1,24 @@
-import React, {  useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { DataContext } from "../contexts/DataContext";
+import Header from "./Header";
 
 const CreateDrawer = () => {
   const { createDrawer, toggleCreateDrawer, addCourse } =
     useContext(DataContext);
-  
-  const [isLoading, setIsLoading] = useState(false);
-
   const formRef = useRef();
 
-  const handleForm = async (event) => {
-    event.preventDefault();
-    console.log("U submit");
-    const formData = new FormData(formRef.current);
+  const [isLoading, setIsLoading] = useState(false);
 
+  const handleForm = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(formRef.current);
     const newCourse = {
       title: formData.get("course_title"),
       short_name: formData.get("short_name"),
       fee: formData.get("course_fee"),
+      // close: formData.get("close"),
     };
-    // console.log(newCourse);
+    // console.log(typeof(formData.get("close")));
 
     setIsLoading(true);
 
@@ -28,9 +27,8 @@ const CreateDrawer = () => {
       headers: new Headers({ "Content-Type": "application/json" }),
       body: JSON.stringify(newCourse),
     });
-    
-    const json = await res.json();
-    addCourse(json);
+    const jsonData = await res.json();
+    addCourse(jsonData);
 
     setIsLoading(false);
 
@@ -46,9 +44,11 @@ const CreateDrawer = () => {
       id="drawer-right-example"
       className={`fixed shadow top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform bg-white w-80 dark:bg-gray-800 ${
         !createDrawer && "translate-x-full"
-      }`}
+      } `}
       tabIndex={-1}
       aria-labelledby="drawer-right-label"
+      aria-modal="true"
+      role="dialog"
     >
       <h5
         id="drawer-right-label"
@@ -66,11 +66,11 @@ const CreateDrawer = () => {
         Create new Course
       </h5>
       <button
-        onClick={toggleCreateDrawer}
         type="button"
+        onClick={toggleCreateDrawer}
         data-drawer-hide="drawer-right-example"
         aria-controls="drawer-right-example"
-        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
+        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white active:scale-90 duration-200"
       >
         <svg
           className="w-3 h-3 pointer-events-none"
@@ -90,7 +90,7 @@ const CreateDrawer = () => {
         <span className="sr-only">Close menu</span>
       </button>
       {/* create form */}
-      <form ref={formRef} onSubmit={handleForm} id="courseForm">
+      <form onSubmit={handleForm} ref={formRef} id="courseForm">
         <div className="mb-5">
           <label
             htmlFor="course_title"
@@ -145,16 +145,16 @@ const CreateDrawer = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <input
+              disabled={isLoading}
               id="default-checkbox"
-              name="close"
               type="checkbox"
+              name="close"
               defaultValue
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              required
             />
             <label
               htmlFor="default-checkbox"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 select-none"
             >
               Close after saved
             </label>
@@ -162,7 +162,7 @@ const CreateDrawer = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="group text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 disabled:opacity-70"
+            className="group text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 disabled:opacity-70 active:scale-95 duration-200"
           >
             <span className="inline group-disabled:hidden">Create</span>
             <span className="hidden group-disabled:flex items-center gap-2">

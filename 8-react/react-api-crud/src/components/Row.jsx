@@ -1,6 +1,6 @@
 import React from "react";
-import RowDeleteBtn from "./RowDeleteBtn";
-import RowEditBtn from "./RowEditBtn";
+import RowDeleteBtn from "./RowBtn/RowDeleteBtn";
+import RowEditBtn from "./RowBtn/RowEditBtn";
 
 const Row = ({ course: { id, title, short_name, fee } }) => {
   return (
@@ -15,8 +15,7 @@ const Row = ({ course: { id, title, short_name, fee } }) => {
       <td className="px-6 py-4 cell-editable row-short">{short_name}</td>
       <td className="px-6 py-4 cell-editable row-fee text-end">{fee}</td>
       <td className="px-6 py-4 text-right flex gap-1 justify-end">
-       <RowEditBtn id={id} />
-
+        <RowEditBtn id={id} />
         <RowDeleteBtn id={id} />
       </td>
     </tr>
