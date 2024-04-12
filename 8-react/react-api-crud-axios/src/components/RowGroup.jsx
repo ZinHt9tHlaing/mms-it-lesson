@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import Row from "./Row";
-import LoaderRow from "./LoaderRow";
-import EmptyRow from "./EmptyRow";
+import LoaderRow from "./Loader/LoaderRow";
 import { DataContext } from "../contexts/DataContext";
+import EmptyRow from "./EmptyRow";
 import { baseUrl } from "../config/config";
-import axios from "axios";
 import { courseApi } from "../api/course";
 
 const RowGroup = () => {
   const { courses, setCourses } = useContext(DataContext);
   const [ready, setReady] = useState(false);
 
-  const loaderRowCount = Array.from({ length: 5 }, (_, index) => index);
+  const loaderRowCount = Array.from({ length: 4 }, (_, index) => index);
+  // console.log(loaderRowCount);
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const res = await courseApi.get("/courses");
+      const res = await courseApi("/courses");
       setCourses(res.data);
       setReady(true);
     };

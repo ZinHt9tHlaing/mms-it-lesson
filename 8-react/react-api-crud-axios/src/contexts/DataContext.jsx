@@ -7,15 +7,15 @@ const DataContextProvider = ({ children }) => {
   const [editDrawer, setEditDrawer] = useState(false);
   const [courses, setCourses] = useState([]);
 
-  const addCourse = (newCourse) => {
-    setCourses([...courses, newCourse]);
-  };
+  const [editCourse,setEditCourse] = useState({})
 
-  const [editCourse, setEditCourse] = useState([]);
+  const addCourse = (newCourse) => {
+    setCourses([...courses,newCourse])
+  }
 
   const deleteCourse = (id) => {
-    setCourses(courses.filter((course) => course.id != id));
-  };
+    setCourses(courses.filter(course => course.id != id))
+  }
 
   const updateCourse = (newCourse) => {
     setCourses(courses.map(course => {

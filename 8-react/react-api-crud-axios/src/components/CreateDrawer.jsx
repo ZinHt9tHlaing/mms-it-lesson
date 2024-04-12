@@ -1,70 +1,64 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { DataContext } from "../contexts/DataContext";
+import Header from "./Header";
 import { baseUrl } from "../config/config";
 import axios from "axios";
 import { courseApi } from "../api/course";
 
-const EditDrawer = () => {
-  const {
-    editDrawer,
-    toggleEditDrawer,
-    editCourse: { id, title, short_name, fee },
-    updateCourse,
-  } = useContext(DataContext);
+const CreateDrawer = () => {
+  const { createDrawer, toggleCreateDrawer, addCourse } =
+    useContext(DataContext);
+  const formRef = useRef();
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const idRef = useRef();
-  const titleRef = useRef();
-  const shortRef = useRef();
-  const feeRef = useRef();
-  const closeRef = useRef();
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleForm = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(formRef.current);
     const newCourse = {
-      title: titleRef.current.value,
-      short_name: shortRef.current.value,
-      fee: feeRef.current.value,
+      title: formData.get("course_title"),
+      short_name: formData.get("short_name"),
+      fee: formData.get("course_fee"),
+      // close: formData.get("close"),
     };
+    // console.log(typeof(formData.get("close")));
 
     setIsLoading(true);
 
-    // const res = await fetch(baseUrl + "/courses/" + id, {
-    //   method: "PUT",
+    // const res = await fetch(baseUrl+"/courses", {
+    //   method: "POST",
     //   headers: new Headers({ "Content-Type": "application/json" }),
     //   body: JSON.stringify(newCourse),
     // });
+    // const jsonData = await res.json();
 
-    const res = await courseApi.put(
-      `/courses/${id}`,
-      JSON.stringify(newCourse)
-    );
+    const res = await courseApi.post("/courses", JSON.stringify(newCourse), {
+      headers: { "Content-Type": "application/json" },
+    });
 
-    // const json = await res.json();
-    updateCourse(res.data);
+    // console.log(res);
+
+    addCourse(res.data);
 
     setIsLoading(false);
 
-    closeRef.current.checked && toggleEditDrawer();
-  };
+    if (formData.get("close")) {
+      toggleCreateDrawer();
+    }
 
-  useEffect(() => {
-    console.log("edit drawer work");
-    idRef.current.value = id;
-    titleRef.current.value = title;
-    shortRef.current.value = short_name;
-    feeRef.current.value = fee;
-  }, []);
+    formRef.current.reset();
+  };
 
   return (
     <div
-      id="edit-drawer"
+      id="drawer-right-example"
       className={`fixed shadow top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform bg-white w-80 dark:bg-gray-800 ${
-        !editDrawer && "translate-x-full"
-      }`}
+        !createDrawer && "translate-x-full"
+      } `}
       tabIndex={-1}
       aria-labelledby="drawer-right-label"
+      aria-modal="true"
+      role="dialog"
     >
       <h5
         id="drawer-right-label"
@@ -79,14 +73,14 @@ const EditDrawer = () => {
         >
           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
         </svg>
-        Edit Course
+        Create new Course
       </h5>
       <button
-        onClick={toggleEditDrawer}
         type="button"
-        data-drawer-hide="edit-drawer"
-        aria-controls="edit-drawer"
-        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
+        onClick={toggleCreateDrawer}
+        data-drawer-hide="drawer-right-example"
+        aria-controls="drawer-right-example"
+        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white active:scale-90 duration-200"
       >
         <svg
           className="w-3 h-3 pointer-events-none"
@@ -105,27 +99,20 @@ const EditDrawer = () => {
         </svg>
         <span className="sr-only">Close menu</span>
       </button>
-      {/* edit form */}
-      <form onSubmit={handleSubmit} id="courseEditForm">
-        <input
-          type="hidden"
-          name="edit_course_id"
-          id="edit_course_id"
-          ref={idRef}
-        />
+      {/* create form */}
+      <form onSubmit={handleForm} ref={formRef} id="courseForm">
         <div className="mb-5">
           <label
-            htmlFor="edit_course_title"
+            htmlFor="course_title"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Course Title
           </label>
           <input
-            type="text"
             disabled={isLoading}
-            ref={titleRef}
-            id="edit_course_title"
-            name="edit_course_title"
+            type="text"
+            id="course_title"
+            name="course_title"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="eg. Special Web Design"
             required
@@ -133,17 +120,16 @@ const EditDrawer = () => {
         </div>
         <div className="mb-5">
           <label
-            htmlFor="edit_short_name"
+            htmlFor="short_name"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Short Title
           </label>
           <input
-            type="text"
             disabled={isLoading}
-            ref={shortRef}
-            id="edit_short_name"
-            name="edit_short_name"
+            type="text"
+            id="short_name"
+            name="short_name"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="eg. SWD"
             required
@@ -151,17 +137,16 @@ const EditDrawer = () => {
         </div>
         <div className="mb-5">
           <label
-            htmlFor="edit_course_fee"
+            htmlFor="course_fee"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Course Fee
           </label>
           <input
-            type="number"
-            ref={feeRef}
             disabled={isLoading}
-            id="edit_course_fee"
-            name="edit_course_fee"
+            type="number"
+            id="course_fee"
+            name="course_fee"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="eg. Special Web Design"
             required
@@ -170,25 +155,26 @@ const EditDrawer = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <input
-              id="edit-default-checkbox"
+              disabled={isLoading}
+              id="default-checkbox"
               type="checkbox"
-              ref={closeRef}
+              name="close"
+              defaultValue
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              required
             />
             <label
-              htmlFor="edit-default-checkbox"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              htmlFor="default-checkbox"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 select-none"
             >
-              Close after updated
+              Close after saved
             </label>
           </div>
           <button
             disabled={isLoading}
             type="submit"
-            className="group text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 disabled:opacity-70"
+            className="group text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 disabled:opacity-70 active:scale-95 duration-200"
           >
-            <span className="inline group-disabled:hidden">Update</span>
+            <span className="inline group-disabled:hidden">Create</span>
             <span className="hidden group-disabled:flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -213,4 +199,4 @@ const EditDrawer = () => {
   );
 };
 
-export default EditDrawer;
+export default CreateDrawer;

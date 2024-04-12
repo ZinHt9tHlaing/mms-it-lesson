@@ -3,7 +3,5 @@ import { baseUrl } from "../config/config";
 
 export const courseApi = axios.create({
   baseURL: baseUrl,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  headers: { "Content-Type": "application/json" },
 });

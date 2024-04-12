@@ -8,16 +8,13 @@ import { DataContext } from "./contexts/DataContext";
 
 const App = () => {
   const { editDrawer } = useContext(DataContext);
-
   return (
-    <div>
-      <Container>
-        <Header />
-        <CreateDrawer />
-        <CourseTable />
-        {editDrawer && <EditDrawer />}
-      </Container>
-    </div>
+    <Container>
+      <Header />
+      <CourseTable />
+      <CreateDrawer />
+      {editDrawer && <EditDrawer />}
+    </Container>
   );
 };
 
