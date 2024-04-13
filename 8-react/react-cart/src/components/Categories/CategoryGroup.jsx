@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Container from "./Container";
-import { categoryApi } from "../api/category";
+import Container from "../Container";
 import Category from "./Category";
+import { categoryApi } from "../../api/category";
 
 const CategoryGroup = () => {
   const [categories, setCategory] = useState([]);
@@ -14,7 +14,7 @@ const CategoryGroup = () => {
       setReady(true);
     };
     fetchCategory();
-  }, []);
+  });
 
   return (
     <section className="category-list mb-10 py-3">
@@ -24,9 +24,9 @@ const CategoryGroup = () => {
           id="categoryList"
           className="flex gap-3 select-none overflow-scroll"
         >
-          <Category catName={"All"} />
+          <Category cateName="All" />
           {!ready && (
-            <div className="hidden last:flex gap-3 animate-pulse">
+            <div className="flex gap-3 animate-pulse">
               <button className="border border-neutral-200 px-4 py-1 flex items-center">
                 <span className="inline-block bg-neutral-200 w-24 h-4" />
               </button>
@@ -40,7 +40,7 @@ const CategoryGroup = () => {
           )}
           {ready &&
             categories.map((category, index) => (
-              <Category key={index} catName={category} />
+              <Category key={index} cateName={category} />
             ))}
         </div>
       </Container>

@@ -3,7 +3,7 @@ import React from "react";
 const ProductLoader = () => {
   return (
     <>
-      <div className="group animate-pulse">
+      <div className="group animate-pulse mb-5">
         <div className="w-36 h-32 bg-neutral-200 -mb-16 ms-5" />
         <div className="border border-neutral-100 p-5">
           <div className="h-4 bg-neutral-200 rounded mt-14 w-3/4 mb-4" />

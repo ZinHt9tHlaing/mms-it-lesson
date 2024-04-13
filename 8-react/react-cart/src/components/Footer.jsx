@@ -8,16 +8,13 @@ const Footer = () => {
         <div className="flex justify-between items-center">
           <p className="font-heading">
             Copy Right ©
-            <a
-              className="text-neutral-300 text-lg font-bold underline"
-              href="https://mms-it.com"
-            >
+            <a className="text-neutral-300" href="https://mms-it.com">
               MMS IT
             </a>
           </p>
           <a
             href="#headerSpacer"
-            className="border border-neutral-200 h-12 w-12 flex justify-center items-center"
+            className="border border-neutral-300 h-12 w-12 flex justify-center items-center hover:bg-neutral-700 hover:border-neutral-500 active:scale-95 duration-200"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +22,7 @@ const Footer = () => {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-5 h-5 stroke-1"
+              className="w-5 h-5 stroke-1 hover:scale-125"
             >
               <path
                 strokeLinecap="round"

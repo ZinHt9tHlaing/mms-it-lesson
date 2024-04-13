@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from "react";
-import { DataContext } from "../context/DataContext";
+import { DataContext } from "../../context/DataContext";
 
-const ImageAnimated = ({ src, info, setAnimate }) => {
+const AnimatedImage = ({ src, info, setAnimated }) => {
   const styles = {
     width: info.width + "px",
     height: info.height + "px",
@@ -15,6 +15,10 @@ const ImageAnimated = ({ src, info, setAnimate }) => {
 
   useEffect(() => {
     const keyframe = [
+      {
+        top: info.top + "px",
+        left: info.left + "px",
+      },
       {
         top: cartBtnInfo.top + 10 + "px",
         left: cartBtnInfo.left + 10 + "px",
@@ -32,7 +36,7 @@ const ImageAnimated = ({ src, info, setAnimate }) => {
     const animation = imgRef.current.animate(keyframe, options);
 
     const run = () => {
-      setAnimate(false);
+      setAnimated(false);
     };
 
     animation.addEventListener("finish", run);
@@ -45,4 +49,4 @@ const ImageAnimated = ({ src, info, setAnimate }) => {
   return <img src={src} ref={imgRef} style={styles} className=" fixed z-40" />;
 };
 
-export default ImageAnimated;
+export default AnimatedImage;

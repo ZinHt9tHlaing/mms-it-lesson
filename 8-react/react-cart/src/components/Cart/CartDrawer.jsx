@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
-import { DataContext } from "../context/DataContext";
+import { DataContext } from "../../context/DataContext";
 import Cart from "./Cart";
+import EmptyCart from "./EmptyCart";
 
 const CartDrawer = () => {
   const { toggleCartDrawer, carts } = useContext(DataContext);
+
   return (
     <section
       className="cart-box flex flex-col border-s-2 border-neutral-600 fixed w-96 h-screen bg-white top-0 right-0 z-50 duration-300"
@@ -14,10 +16,10 @@ const CartDrawer = () => {
           <div>
             <h1 className="font-heading font-bold text-2xl">Your Items</h1>
             <p className="text-neutral-500">
-              Product in Cart
+              Product in Cart{" "}
               <span
                 id="cartBodyCount"
-                className="text-xs w-4 h-4 ms-1 bg-red-500 inline-flex justify-center items-center text-white"
+                className="text-xs w-4 h-4 bg-red-500 inline-flex justify-center items-center text-white"
               >
                 {carts.length}
               </span>
@@ -26,7 +28,7 @@ const CartDrawer = () => {
           <div className="control-btn flex gap-2">
             <button
               onClick={toggleCartDrawer}
-              className="border duration-100 active:scale-90 border-neutral-600 h-12 w-12 flex justify-center items-center"
+              className="border duration-300 active:scale-90 border-neutral-600 h-12 w-12 flex justify-center items-center"
               id="cartCloseBtn"
             >
               <svg
@@ -48,12 +50,7 @@ const CartDrawer = () => {
         </div>
       </div>
       <div className="cart-body flex-grow flex flex-col overflow-scroll p-5">
-        {carts.length === 0 && (
-          <div className="cart-empty-stage m-auto text-center w-3/4">
-            <img src="https://mms-cart.netlify.app/assets/empty-cart-587700a3.svg" />
-            <p className="font-heading">There is no item in cart</p>
-          </div>
-        )}
+        <EmptyCart carts={carts} />
         {carts.length > 0 &&
           carts.map((cart) => <Cart key={cart.product_id} cart={cart} />)}
       </div>
@@ -64,7 +61,7 @@ const CartDrawer = () => {
             <h1 className="font-heading font-bold text-2xl">
               ${" "}
               <span id="cartCostTotal">
-                {carts.reduce((pv, cv) => pv + cv.cost, 0).toFixed(2)}
+                {carts.reduce((pv, cv) => pv + cv.cost, 0)}
               </span>
             </h1>
           </div>

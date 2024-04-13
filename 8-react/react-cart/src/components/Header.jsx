@@ -3,9 +3,11 @@ import Container from "./Container";
 import { DataContext } from "../context/DataContext";
 
 const Header = () => {
-  const { toggleCartDrawer, carts, setCartBtnInfo } = useContext(DataContext);
+  const { toggleCartDrawer, carts, setCartBtnInfo } =
+    useContext(DataContext);
 
   const cartBtnRef = useRef();
+
   useEffect(() => {
     setCartBtnInfo(cartBtnRef.current.getBoundingClientRect());
   }, []);

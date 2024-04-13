@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import StarRating from "./StarRating";
-import { DataContext } from "../context/DataContext";
-import ImageAnimated from "./animatedImage";
+import StarRating from "../StarRating";
+import { DataContext } from "../../context/DataContext";
+import Swal from "sweetalert2";
+import AnimatedImage from "../animateImg/animatedImage";
 
 const Products = ({
   product: {
@@ -15,8 +16,9 @@ const Products = ({
   },
 }) => {
   const { addCart } = useContext(DataContext);
+
   const [added, setAdded] = useState(false);
-  const [animate, setAnimate] = useState(false);
+  const [animated, setAnimated] = useState(false);
 
   const handleAddToCart = () => {
     // console.log("add");
@@ -31,10 +33,16 @@ const Products = ({
       };
       addCart(newCart);
       setAdded(true);
-      setAnimate(true)
+      setAnimated(true);
+    } else {
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Already Added",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
-
-    // need to show "already added"
   };
 
   const [info, setInfo] = useState({});
@@ -43,23 +51,21 @@ const Products = ({
 
   useEffect(() => {
     setInfo(imgRef.current.getBoundingClientRect());
-  },[]);
+  }, []);
 
   return (
     <div className="product-card group">
       <img
-        className="product-card-img group-hover:-rotate-6 duration-300 transition-transform h-32 ms-5 -mb-16"
+        className="product-card-img group-hover:scale-110 group-hover:-rotate-6 duration-300 transition-transform h-32 ms-5 -mb-16"
         src={image}
         ref={imgRef}
       />
-
-      {animate && <ImageAnimated src={image} info={info} setAnimate={setAnimate} />}
-
+      {animated && <AnimatedImage src={image} info={info} setAnimated={setAnimated} />}
       <div className="product-card-body border border-neutral-600 p-5">
         <p className="product-card-title font-heading text-xl line-clamp-1 font-bold mt-14 mb-2">
           {title}
         </p>
-        <p className="product-card-description text-neutral-500 text-sm mb-4 line-clamp-3">
+        <p className="product-card-description text-neutral-500 text-sm mb-4 line-clamp-2">
           {description}
         </p>
         <div className="rating border-b border-neutral-600 pb-3 mb-3 flex justify-between">
@@ -74,11 +80,10 @@ const Products = ({
           $ <span className="price">{price}</span>
         </p>
         <button
-          disabled={added}
           onClick={handleAddToCart}
           className={` ${
-            added && "bg-neutral-600 text-white"
-          } duration-100 active:scale-90 border disabled:pointer-events-none select-none border-neutral-600 block w-full h-12 font-heading`}
+            added && "bg-neutral-600 text-white select-none"
+          } duration-200 active:scale-95 border border-neutral-600 block w-full h-12 font-heading`}
         >
           {added ? "Added" : "Add to Cart"}
         </button>
