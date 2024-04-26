@@ -1,0 +1,1 @@
+yarn json-server ./src/db/mock.json --port 8000
