@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import useApi from "../hook/useApi";
 import { Login } from "../service/auth.service";
 import { useDispatch, useSelector } from "react-redux";
-import { LoginAction } from "../store/action/auth.action";
+import { login, processing } from "../store/slice/auth.slice";
 
 const LoginPage = () => {
   const nav = useNavigate();
@@ -25,9 +25,11 @@ const LoginPage = () => {
     }
   }, [data]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    LoginAction(dispatch, formData);
+    dispatch(processing());
+    const res = await Login(formData);
+    dispatch(login(res.data));
   };
 
   const handleInputChange = (e) =>
