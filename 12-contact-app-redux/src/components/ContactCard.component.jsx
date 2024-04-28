@@ -17,7 +17,7 @@ const ContactCardComponent = ({ data, handleDelete }) => {
  
 
   return (
-    <div className="w-2/4 h-auto border my-5 rounded-lg shadow hover:bg-black hover:text-white flex justify-between items-center p-5 duration-300">
+    <div className="w-2/4 h-auto border-2 my-5 rounded-lg shadow-md hover:bg-black hover:text-white flex justify-between items-center p-5 duration-300">
       <button
         onClick={handleDirect}
         className=" me-4 flex-1 duration-200 hover:border-2 hover:py-1 hover:rounded active:scale-90"
@@ -30,13 +30,13 @@ const ContactCardComponent = ({ data, handleDelete }) => {
       <div className=" space-x-2">
         <button
           onClick={handleEdit}
-          className="border border-gray-300 hover:scale-110 rounded text-xl active:scale-95 p-2 duration-300"
+          className="border border-gray-300 shadow-md hover:scale-110 rounded text-xl active:scale-95 p-2 duration-300"
         >
           <CiEdit />
         </button>
         <button
           onClick={handleDelete.bind(this, data.id)}
-          className="border border-gray-300 hover:scale-110 rounded text-xl active:scale-95 p-2 duration-300"
+          className="border border-gray-300 shadow-md hover:scale-110 rounded text-xl active:scale-95 p-2 duration-300"
         >
           <CiTrash />
         </button>
