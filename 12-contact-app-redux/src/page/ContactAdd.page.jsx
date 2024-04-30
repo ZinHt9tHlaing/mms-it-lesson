@@ -2,8 +2,15 @@ import React, { useEffect, useState } from "react";
 import { ButtonComponents, FormComponent } from "../components";
 import { addNewContact, editContact } from "../service/contact.service";
 import { useLocation, useNavigate } from "react-router-dom";
+import {
+  useCreateContactMutation,
+  useEditContactMutation,
+} from "../store/endpoints/contact.endpoint";
 
 const ContactAddPage = () => {
+  const [fun, postData] = useCreateContactMutation();
+  const [edit, { isError, isLoading, data }] = useEditContactMutation();
+
   const nav = useNavigate();
   const location = useLocation();
   const [formData, setFormData] = useState({
@@ -28,9 +35,9 @@ const ContactAddPage = () => {
     e.preventDefault();
     let res;
     if (location.state?.edit) {
-      res = await editContact(location.state.id, formData);
+      res = await edit(location.state.id, formData);
     } else {
-      res = await addNewContact(formData);
+      res = await fun(formData);
     }
     if (res) {
       nav("/home");

@@ -7,9 +7,8 @@ import {
   LoadingComponent,
   PreventComponents,
 } from "../components";
-import { useNavigate } from "react-router-dom";
-import useApi from "../hook/useApi";
 import { Login } from "../service/auth.service";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, processing } from "../store/slice/auth.slice";
 
@@ -19,6 +18,9 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({ email: "", password: "" });
 
+  const handleInputChange = (e) =>
+    setFormData((pre) => ({ ...pre, [e.target.name]: e.target.value }));
+
   useEffect(() => {
     if (data) {
       nav("/home");
@@ -27,13 +29,10 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(processing());
+    dispatch(processing()); // loading true
     const res = await Login(formData);
     dispatch(login(res.data));
   };
-
-  const handleInputChange = (e) =>
-    setFormData((pre) => ({ ...pre, [e.target.name]: e.target.value }));
 
   return (
     <PreventComponents fail={"/home"} check={localStorage.getItem("auth")}>

@@ -6,4 +6,3 @@ export { default as ErrorComponent } from "./Error.component";
 export { default as PreventComponents } from "./Prevent.components";
 export { default as ContactCardComponent } from "./ContactCard.component";
 export { default as DetailContactPage } from "../page/DetailContact.page";
-
