@@ -1,17 +1,16 @@
 import React from "react";
-import { useGetTodoQuery } from "../store/service/endpoints/todo.endpoints";
 
 const List = ({ isLoading, data }) => {
   return (
     <div>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <h1 className=" text-2xl font-bold">Loading...</h1>
       ) : (
         <>
           {data.map((i) => (
-            <h1 key={i.id} className=" text-2xl">
-              {i.id} - {i.text}
-            </h1>
+            <div key={i.id} className="flex">
+              <span>{i.id}</span> <p className=" mx-1 font-semibold">-</p> <h1 className=" font-bold">{i.text}</h1>
+            </div>
           ))}
         </>
       )}
