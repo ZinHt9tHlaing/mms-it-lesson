@@ -1,26 +1,22 @@
-import { ApiService } from "../ApiService";
+import { ApiService } from "../ApiServices";
 
 const authEndpoints = ApiService.injectEndpoints({
   endpoints: (builder) => ({
     signIn: builder.mutation({
       query: (arg) => ({
         url: "/login",
-        method: "POST",
+        method: "post",
         body: arg,
       }),
     }),
     signUp: builder.mutation({
       query: (arg) => ({
         url: "/register",
-        method: "POST",
+        method: "post",
         body: arg,
       }),
-    }),
-    profile: builder.query({
-      query: () => "/user-profile",
     }),
   }),
 });
 
-export const { useSignInMutation, useSignUpMutation, useProfileQuery } =
-  authEndpoints;
+export const { useSignInMutation, useSignUpMutation } = authEndpoints;
