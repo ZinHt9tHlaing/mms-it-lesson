@@ -5,6 +5,13 @@ export const ApiService = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: API_ENDPOINT,
+    prepareHeaders: (headers, { getState }) => {
+      const token = localStorage.getItem("token");
+
+      if (token) {
+        headers.set("authorization", `Bearer ${JSON.parse(token)}`);
+      }
+    },
   }),
   endpoints: (builder) => ({}),
 });

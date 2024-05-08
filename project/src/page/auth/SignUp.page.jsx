@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -12,13 +12,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ErrorMessage, Form, Formik } from "formik";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSignUpMutation } from "../../store/services/endpoints/auth.endpoint";
 import { Loader2 } from "lucide-react";
+import { Toaster } from "@/components/ui/toaster";
 
 const SignUp = () => {
+  const nav = useNavigate();
   const [fun, data] = useSignUpMutation();
-  console.log(data);
 
   const initialValues = {
     name: "",
@@ -31,11 +32,22 @@ const SignUp = () => {
     await fun(value);
   };
 
+  useEffect(() => {
+    if (data.error) {
+      <Toaster
+        title="Auth Error with Server"
+        description={data.error.data.message}
+      />;
+    } else if (data.data) {
+      nav("/");
+    }
+  }, []);
+
   const validationSchema = yup.object({
     name: yup
       .string()
       .required("Name is required")
-      .min(8, "Name should be longer than 8 letters"),
+      .min(6, "Name should be longer than 6 letters"),
     email: yup
       .string()
       .required("Email is required")
@@ -59,7 +71,11 @@ const SignUp = () => {
         <CardHeader className=" flex-row justify-between items-center mb-5">
           <CardTitle className=" font-bold text-3xl">Sign Up</CardTitle>
           <CardDescription className=" text-basic">
-            <Link to={"/"}>Already have an account?</Link>
+            <Link to={"/"}>
+              <span className="hover:scale-105 active:scale-95 duration-300">
+                Already have an account?
+              </span>
+            </Link>
           </CardDescription>
         </CardHeader>
         <CardContent>

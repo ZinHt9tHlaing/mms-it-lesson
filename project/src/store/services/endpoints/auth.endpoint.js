@@ -16,7 +16,11 @@ const authEndpoints = ApiService.injectEndpoints({
         body: arg,
       }),
     }),
+    getProfile: builder.query({
+      query: () => "/user-profile",
+    }),
   }),
 });
 
-export const { useSignInMutation, useSignUpMutation } = authEndpoints;
+export const { useSignInMutation, useSignUpMutation, useGetProfileQuery } =
+  authEndpoints;
