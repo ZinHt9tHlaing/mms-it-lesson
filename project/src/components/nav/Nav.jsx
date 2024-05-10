@@ -6,7 +6,7 @@ const Nav = () => {
     <div className=" w-full h-20 px-52 flex items-center bg-gray-100 shadow">
       <div className=" flex justify-between items-center w-full">
         <Link to={"/home"}>
-          <h1 className=" text-2xl text-basic font-bold hover:-rotate-6 hover:scale-110 active:scale-95 duration-300">
+          <h1 className=" text-2xl text-basic font-bold hover:-rotate-6 hover:scale-125 active:scale-95 duration-300">
             MMS
           </h1>
         </Link>

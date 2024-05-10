@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const AuthGuard = ({ check, children, token }) => {
   const nav = useNavigate();
   const { data, isError, isLoading } = useGetProfileQuery();
-  console.log("Auth guard", data, isError, isLoading);
+  // console.log("Auth guard", data, isError, isLoading);
 
   useEffect(() => {
     if (check) {

@@ -32,7 +32,7 @@ const SignInPage = () => {
       .required("Email is required")
       .email("Invalid Email Formate"),
     password: yup
-      .string()
+      .number()
       .required("Password is required")
       .min(8, "Password should be 8 letters"),
   });
