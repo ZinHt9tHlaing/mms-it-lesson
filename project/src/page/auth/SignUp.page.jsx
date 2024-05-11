@@ -17,6 +17,7 @@ import { useSignUpMutation } from "../../store/services/endpoints/auth.endpoint"
 import { Loader2 } from "lucide-react";
 import { Toaster } from "@/components/ui/toaster";
 import AuthGuard from "../../components/guard/Auth.guard";
+import { toast } from "sonner";
 
 const SignUp = () => {
   const nav = useNavigate();
@@ -31,6 +32,7 @@ const SignUp = () => {
 
   const handleSubmit = async (value) => {
     await fun(value);
+    toast.success("Sign up Successfully");
   };
 
   useEffect(() => {
@@ -67,7 +69,7 @@ const SignUp = () => {
   });
 
   return (
-    <AuthGuard>
+    <AuthGuard path="/sign_up">
       <div className=" w-3/5 mx-auto h-full flex justify-center items-center">
         <Card className=" basis-2/4 p-5 shadow-md">
           <CardHeader className=" flex-row justify-between items-center mb-5">

@@ -19,10 +19,25 @@ import {
   useGetContactQuery,
 } from "../../store/services/endpoints/contact.endpoint";
 import DataTableTool from "./tool/DataTable.tool";
+import { useState } from "react";
 
 const HomePage = () => {
   const { data, isError, isSuccess, isLoading } = useGetContactQuery();
-  // console.log("hello", data);
+
+  const [editData, setEditData] = useState({
+    edit: false,
+    data: null,
+  });
+
+  const handleEdit = (id) => {
+    const apiData = data?.contacts?.data;
+    const finder = apiData.find((i) => i.id === id);
+    setEditData({ edit: true, data: finder });
+  };
+
+  const handleClose = () => {
+    setEditData({ edit: false, data: null });
+  };
 
   return (
     <AuthGuard>
@@ -40,7 +55,10 @@ const HomePage = () => {
             </div>
 
             {data?.contacts?.data.length > 0 ? (
-              <DataTableTool data={data?.contacts?.data} />
+              <DataTableTool
+                handleEdit={handleEdit}
+                apiData={data?.contacts?.data}
+              />
             ) : (
               <div className=" border bg-white shadow w-full mt-5 h-[600px] rounded flex flex-col justify-center items-center">
                 <EmptyLottie />
@@ -51,13 +69,13 @@ const HomePage = () => {
             )}
           </div>
           {/* sheet */}
-          <SheetContent>
+          <SheetContent onClose={handleClose} onOverlayClick={handleClose}>
             <SheetHeader>
               <SheetTitle className=" font-bold text-2xl">
                 Contact Information
               </SheetTitle>
             </SheetHeader>
-            <FormTool />
+            <FormTool editData={editData} handleClose={handleClose} />
             {/* <SheetFooter>
               <SheetClose asChild>
                 <Button

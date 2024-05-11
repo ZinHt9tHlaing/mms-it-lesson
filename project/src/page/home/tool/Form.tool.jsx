@@ -3,22 +3,25 @@ import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { ErrorMessage, Form, Formik } from "formik";
 import * as yup from "yup";
-import { useCreateContactMutation } from "../../../store/services/endpoints/contact.endpoint";
+import {
+  useCreateContactMutation,
+  useUpdateContactMutation,
+} from "../../../store/services/endpoints/contact.endpoint";
 import { useEffect, useRef } from "react";
 import { Loader2 } from "lucide-react";
 import { SheetClose } from "../../../components/ui/sheet";
 
-const FormTool = () => {
+const FormTool = ({ editData, handleClose }) => {
   const CloseRef = useRef();
-  const [fun, { data, isError, isLoading }] = useCreateContactMutation();
-  // console.log(data);
-
   const initialValues = {
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
+    name: editData.data?.name || "",
+    email: editData.data?.email || "",
+    phone: editData.data?.phone || "",
+    address: editData.data?.address || "",
   };
+
+  const [fun, { data, isError, isLoading }] = useCreateContactMutation();
+  const [updateFun, apiData] = useUpdateContactMutation();
 
   const validationSchema = yup.object({
     name: yup
@@ -37,14 +40,15 @@ const FormTool = () => {
     address: yup.string().required("Address field is required"),
   });
 
-  const handleSubmit = async (value) => {
-    await fun(value);
+  const handleSubmit = async (value, action) => {
+    if (editData.edit) {
+      await updateFun({ id: editData.data?.id, ...value });
+    } else {
+      await fun(value);
+    }
+    // action.reset();
     CloseRef.current.click();
   };
-
-  useEffect(() => {
-    console.log("Hello world", data, isError, isLoading);
-  }, [data, isError, isLoading]);
 
   return (
     <div className=" h-full">
@@ -152,6 +156,7 @@ const FormTool = () => {
               <div className="flex gap-3">
                 <SheetClose ref={CloseRef} asChild>
                   <Button
+                    onClick={handleClose}
                     variant="outline"
                     disabled={isSubmitting}
                     type="button"

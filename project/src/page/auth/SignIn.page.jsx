@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -16,10 +16,12 @@ import * as yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useSignInMutation } from "../../store/services/endpoints/auth.endpoint";
 import AuthGuard from "../../components/guard/Auth.guard";
+import { toast } from "sonner";
 
 const SignInPage = () => {
+  const [swalProps, setSwalProps] = useState({});
   const [fun, data] = useSignInMutation();
-  const nav = useNavigate()
+  const nav = useNavigate();
 
   const initialValues = {
     email: "",
@@ -40,11 +42,12 @@ const SignInPage = () => {
   const handleSubmit = async (value, action) => {
     await fun(value);
     // action.reset();
+    toast.success("Sign in Successfully");
   };
 
   useEffect(() => {
     if (data?.data?.success) {
-      nav("/home")
+      nav("/home");
     }
   }, [data]);
 
