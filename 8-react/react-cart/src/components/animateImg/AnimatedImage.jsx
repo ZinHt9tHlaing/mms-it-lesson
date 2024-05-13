@@ -28,7 +28,7 @@ const AnimatedImage = ({ src, info, setAnimated }) => {
       },
     ];
     const options = {
-      duration: 500,
+      duration: 800,
       iterations: 1,
       fill: "both",
     };

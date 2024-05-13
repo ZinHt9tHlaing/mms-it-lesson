@@ -17,7 +17,7 @@ const ProductGroup = () => {
       setReady(true);
     };
     fetchProduct();
-  });
+  }, []);
 
   return (
     <section className="product-list mb-10">

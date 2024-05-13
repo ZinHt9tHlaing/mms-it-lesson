@@ -19,7 +19,7 @@ const CategoryGroup = () => {
   return (
     <section className="category-list mb-10 py-3">
       <Container>
-        <p className="font-heading mb-2">Select Categories</p>
+        <p className="font-heading mb-2 font-semibold">Select Categories</p>
         <div
           id="categoryList"
           className="flex gap-3 select-none overflow-scroll"

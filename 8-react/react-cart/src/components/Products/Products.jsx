@@ -15,7 +15,7 @@ const Products = ({
     rating: { rate, count },
   },
 }) => {
-  const { addCart } = useContext(DataContext);
+  const { addCart, deleteCart } = useContext(DataContext);
 
   const [added, setAdded] = useState(false);
   const [animated, setAnimated] = useState(false);
@@ -34,13 +34,16 @@ const Products = ({
       addCart(newCart);
       setAdded(true);
       setAnimated(true);
+    } else if (deleteCart(id)) {
+      setAdded(false);
+      setAnimated(false);
     } else {
       Swal.fire({
         position: "top-end",
         icon: "warning",
         title: "Already Added",
         showConfirmButton: false,
-        timer: 1500,
+        timer: 1000,
       });
     }
   };
@@ -60,7 +63,9 @@ const Products = ({
         src={image}
         ref={imgRef}
       />
-      {animated && <AnimatedImage src={image} info={info} setAnimated={setAnimated} />}
+      {animated && (
+        <AnimatedImage src={image} info={info} setAnimated={setAnimated} />
+      )}
       <div className="product-card-body border border-neutral-600 p-5">
         <p className="product-card-title font-heading text-xl line-clamp-1 font-bold mt-14 mb-2">
           {title}

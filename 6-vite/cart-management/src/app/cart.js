@@ -107,12 +107,12 @@ export const cartRemoveBtnHandler = (event) => {
   const currentCart = event.target.closest(".cart-item");
   const productId = currentCart.getAttribute("product-id");
   Swal.fire({
-    title: "Are you sure?",
+    title: "Are you sure to delete?",
     text: "You won't be able to revert this!",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
     confirmButtonText: "Confirm",
   }).then((result) => {
     if (result.isConfirmed) {

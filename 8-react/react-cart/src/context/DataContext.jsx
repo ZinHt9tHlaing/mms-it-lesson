@@ -14,6 +14,27 @@ const DataContextProvider = ({ children }) => {
     setCarts([...carts, newCart]);
   };
 
+  const deleteCart = (id) =>
+    setCarts(carts.filter((cart) => cart.product_id != id));
+
+  // increment & decrement
+  const updateRecord = (id, addQuantity) => {
+    setCarts(
+      carts.map((el) => {
+        if (el.id === id) {
+          const newQuantity = el.quantity + addQuantity;
+          const newCost = el.price * newQuantity;
+          return {
+            ...el,
+            quantity: newQuantity,
+            cost: newCost,
+          };
+        }
+        return el;
+      })
+    );
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -23,6 +44,8 @@ const DataContextProvider = ({ children }) => {
         addCart,
         cartBtnInfo,
         setCartBtnInfo,
+        deleteCart,
+        updateRecord
       }}
     >
       {children}

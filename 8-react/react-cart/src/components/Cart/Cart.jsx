@@ -1,11 +1,32 @@
 import React, { useContext } from "react";
 import { DataContext } from "../../context/DataContext";
+import Swal from "sweetalert2";
 import { productApi } from "../../api/product";
 
 const Cart = ({
-  cart: { product_id, title, price, image, quantity, cost },
+  cart: { id, product_id, title, price, image, quantity, cost },
+  index,
 }) => {
-  const { carts } = useContext(DataContext);
+  const { carts, deleteCart, updateRecord } = useContext(DataContext);
+
+  const handleDelBtn = () => {
+    Swal.fire({
+      title: "Are you sure to delete this?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#0E1111",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your cart has been deleted.", "success");
+        setTimeout(() => {
+          deleteCart(product_id);
+        }, 1500);
+      }
+    });
+  };
 
 
   return (
@@ -17,6 +38,7 @@ const Cart = ({
         />
         <div className="border bg-white border-neutral-600 p-3 relative">
           <button
+            onClick={handleDelBtn}
             className="cart-item-del bg-red-100 text-red-600 p-1 duration-300 absolute pointer-events-none top-3 -right-3 opacity-0 group-hover:opacity-100 group-hover:right-3 group-hover:pointer-events-auto active:scale-90"
           >
             <svg
@@ -43,14 +65,18 @@ const Cart = ({
               <span className="cart-item-cost">{cost}</span>
             </p>
             <div className="flex">
-              <button className="bg-neutral-300 duration-200 active:scale-90 cart-item-quantity-decrement p-1">
+              <button
+                onClick={() => quantity > 1 && updateRecord(id, -1)}
+                className="bg-neutral-300 duration-200 active:scale-90 cart-item-quantity-decrement p-1"
+              >
+                {/* minus */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-4 h-4 pointer-events-none"
+                  className="w-4 h-4 pointer-events-none active:scale-90 duration-200"
                 >
                   <path
                     strokeLinecap="round"
@@ -59,17 +85,18 @@ const Cart = ({
                   />
                 </svg>
               </button>
-              <p className="cart-item-quantity w-8 text-end bg-neutral-100 pe-1">
+              <p className="cart-item-quantity w-8 bg-neutral-100 text-center ">
                 {quantity}
               </p>
-              <button className="bg-neutral-300 duration-200 active:scale-90 cart-item-quantity-increment p-1">
+              <button onClick={() => updateRecord(id, 1)} className="bg-neutral-300 duration-200 active:scale-90 cart-item-quantity-increment p-1">
+                {/* plus */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-4 h-4 pointer-events-none"
+                  className="w-4 h-4 pointer-events-none active:scale-90 duration-200"
                 >
                   <path
                     strokeLinecap="round"

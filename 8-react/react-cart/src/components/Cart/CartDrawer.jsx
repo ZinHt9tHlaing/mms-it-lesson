@@ -52,7 +52,9 @@ const CartDrawer = () => {
       <div className="cart-body flex-grow flex flex-col overflow-scroll p-5">
         <EmptyCart carts={carts} />
         {carts.length > 0 &&
-          carts.map((cart) => <Cart key={cart.product_id} cart={cart} />)}
+          carts.map((cart, index) => (
+            <Cart key={index} cart={cart} index={index} />
+          ))}
       </div>
       <div className="cart-footer px-3 border-t-2 border-neutral-600">
         <div className="flex flex-col justify-start py-3">
@@ -61,7 +63,7 @@ const CartDrawer = () => {
             <h1 className="font-heading font-bold text-2xl">
               ${" "}
               <span id="cartCostTotal">
-                {carts.reduce((pv, cv) => pv + cv.cost, 0)}
+                {carts.reduce((pv, cv) => pv + cv.cost, 0).toFixed(2)}
               </span>
             </h1>
           </div>

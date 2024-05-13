@@ -88,7 +88,7 @@ export const createProductCard = ({
               </p>
               <button ${isCardItem && "disabled"}
                 class="add-to-cart-btn border font-heading border-neutral-700 w-full p-3 ${
-                  isCardItem && "bg-neutral-700 text-white"
+                  isCardItem && "bg-neutral-700 text-white active:scale-95 duration-200"
                 }"
               >
                 ${isCardItem ? "Added" : "Add to Cart"}
@@ -134,8 +134,8 @@ const addToCartBtnHandler = (event) => {
   const cart = cartBtn.querySelector("svg").getBoundingClientRect();
   const cartItemUiRect = cartItems.getBoundingClientRect();
 
-  console.log(img);
-  console.log(cart);
+  // console.log(img);
+  // console.log(cart);
 
   let effect;
 

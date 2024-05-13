@@ -36,7 +36,7 @@ const RecordTable = () => {
               Total
             </td>
             <td className="px-6 py-4 text-end" id="recordTotal">
-              {records.reduce((pv, cv) => pv + cv.cost, 0).toFixed(2)}
+            {records.reduce((pv, cv) => pv + cv.cost, 0).toFixed(2)}
             </td>
           </tr>
         )}

@@ -3,8 +3,7 @@ import Container from "./Container";
 import { DataContext } from "../context/DataContext";
 
 const Header = () => {
-  const { toggleCartDrawer, carts, setCartBtnInfo } =
-    useContext(DataContext);
+  const { toggleCartDrawer, carts, setCartBtnInfo } = useContext(DataContext);
 
   const cartBtnRef = useRef();
 
@@ -16,9 +15,12 @@ const Header = () => {
     <header className="border-b-2 z-40 fixed w-full bg-white border-neutral-600">
       <Container>
         <div className="flex justify-between items-center py-3">
-          <div className="brand">
+          <div className="brand" >
             <h1 className="font-heading font-bold text-2xl">MMS Solutions</h1>
-            <p className="text-neutral-500">E-commerce App</p>
+            <p className="text-neutral-500 flex gap-2">
+              E-commerce App
+              <b className="text-neutral-500 font-bold">By ZHH</b>
+            </p>
           </div>
           <div className="control-btn flex gap-2">
             <div

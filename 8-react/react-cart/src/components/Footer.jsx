@@ -7,9 +7,9 @@ const Footer = () => {
       <Container>
         <div className="flex justify-between items-center">
           <p className="font-heading">
-            Copy Right ©
-            <a className="text-neutral-300" href="https://mms-it.com">
-              MMS IT
+            Copy Right
+            <a className="text-green-600 font-bold" href="https://mms-it.com">
+              © MMS IT
             </a>
           </p>
           <a
